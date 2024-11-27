@@ -8,6 +8,10 @@ and audio settings, ensuring a consistent experience across platforms.
 
 <img src="https://github.com/user-attachments/assets/759c17c0-0a41-473d-bedc-4e3e22cde3db" width="640">
 
+## Table of Contents
+
+[Feature](https://github.com/antzGames/Godot-Universal-Settings-Plugin/tree/master?tab=readme-ov-file#features)
+
 ## Features
 
 **Persistent Settings**: Saves user graphics and audio preferences, reloading them on game startup.
