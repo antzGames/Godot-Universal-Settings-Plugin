@@ -209,14 +209,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
-selected = 1
 fit_to_longest_item = false
-item_count = 3
-popup/item_0/text = "Fullscreen"
-popup/item_1/text = "Window"
-popup/item_1/id = 1
-popup/item_2/text = "Window Maximized"
-popup/item_2/id = 2
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
 layout_mode = 2
@@ -234,14 +227,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
-selected = 2
 fit_to_longest_item = false
-item_count = 3
-popup/item_0/text = "1440x810"
-popup/item_1/text = "1600x900"
-popup/item_1/id = 1
-popup/item_2/text = "1920x1080"
-popup/item_2/id = 2
 
 [node name="MSAAContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
 layout_mode = 2

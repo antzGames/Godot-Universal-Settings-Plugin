@@ -31,6 +31,15 @@ var window_modes : Dictionary = {"Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUS
 								 "Window" : DisplayServer.WINDOW_MODE_WINDOWED,
 								 "Window Maximized" : DisplayServer.WINDOW_MODE_MAXIMIZED}
 
+# You can modify these window resolutions to your liking, but there has to be at least ONE entry
+# Also modify the settings_data_resource to the default resolution.
+# check the settings_data_resource.gd file to see what the default index is
+var resolutions : Dictionary = {"1280x720"  :  Vector2i(1280, 720),  # index 0
+								"1440x810"  :  Vector2i(1440, 810),  # index 1
+								"1600x900"  :  Vector2i(1600, 900),  # index 2
+								"1920x1080" :  Vector2i(1920, 1080)} # index 3
+
+
 var msaa_modes : Dictionary =  {"None": Viewport.MSAA_DISABLED,
 								"2x" : Viewport.MSAA_2X,
 								"4x" : Viewport.MSAA_4X,
@@ -53,13 +62,6 @@ var last_monitor_count := DisplayServer.get_screen_count() # monitor count
 var settings_data : SettingsDataResource
 var save_settings_path = "user://game_data/"
 var save_file_name = str("settings_data", ProjectSettings.get_setting("application/config/version"), ".tres")
-
-# You can modify these window resolutions to your liking, but there has to be at least ONE entry
-# Also modify the settings_data_resource to the default resolution.
-# The current default is 1920x1080 in the settings_data_resource.gd file
-var resolutions : Dictionary = {"1440x810"  :  Vector2i(1440, 810),  # index 0
-								"1600x900"  :  Vector2i(1600, 900),  # index 1
-								"1920x1080" :  Vector2i(1920, 1080)} # index 2 >>> default
 
 func _init() -> void:
 	pass
@@ -159,8 +161,15 @@ func load_settings():
 
 		# No windows or resolution on Web
 		if OS.get_name() != "Web":
+			for window_mode in window_modes:
+				window_mode_option.add_item(window_mode)
+			for resolution in resolutions:
+				resolution_option.add_item(resolution)
+			
 			set_window_mode(settings_data.window_mode, settings_data.window_mode_index)
+			_on_window_mode_button_item_selected(settings_data.window_mode_index)
 			set_resolution(settings_data.resolution, settings_data.resolution_index)
+			_on_resolution_option_button_item_selected(settings_data.resolution_index)
 		
 		# FSR: only available on Forward+
 		if renderer == 2:
@@ -280,7 +289,6 @@ func set_monitor_options() -> void:
 		screen_option_button.add_item("Monitor %s%s" % [i,is_current])
 	
 	screen_option_button.select(select_i)
-
 	
 func _on_window_mode_button_item_selected(index):
 	window_mode_selected = window_modes.get(window_mode_option.get_item_text(index)) as int
@@ -306,7 +314,6 @@ func _on_fxaa_check_box_toggled(toggled_on):
 		settings_data.fxaa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_tree().get_root().get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 
-
 func _on_taa_check_box_toggled(toggled_on):
 	if toggled_on:
 		settings_data.taa = true
@@ -316,7 +323,6 @@ func _on_taa_check_box_toggled(toggled_on):
 		settings_data.taa = false
 		if OS.get_name() != "Web":
 			get_tree().get_root().get_viewport().use_taa = false
-
 
 func _on_v_sync_check_box_toggled(toggled_on):
 	if toggled_on:
