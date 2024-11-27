@@ -6,8 +6,7 @@ and HTML web builds.
 This plugin simplifies user settings management by saving and reloading configurations for graphics 
 and audio settings, ensuring a consistent experience across platforms.
 
-<img src="https://github.com/user-attachments/assets/759c17c0-0a41-473d-bedc-4e3e22cde3db" width="720">
-
+<img src="https://github.com/user-attachments/assets/759c17c0-0a41-473d-bedc-4e3e22cde3db" width="640">
 
 ## Features
 
@@ -119,7 +118,7 @@ Unfortunately, I am not dynamically quering audio buses layouts.  Right now the 
 
 This is the easiest approach.  Just conigufure your audio bus to look like the following:
 
-
+<img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
 
 ## Configuring default settings
 
@@ -176,7 +175,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("ui_accept"): 
 		UniversalSettings.show_screen()  # will do nothing if already visible
 ```	
-<img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="516">
+<img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
 
 ## Any video tutorials?
 
