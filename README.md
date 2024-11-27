@@ -70,8 +70,16 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 
 ## Installation
 
-1. Download the plugin from this repository.
-2. Copy the plugin folder into your Godot project under `res://addons/universal_settings_plugin/`.
+**Option 1**: Use as a project template
+
+1. Download or clone this repository.
+2. Start creating a new game by making a new scene.
+3. Set your new scene as the main scene.
+
+**Option 2**: Just use as a plugin
+
+1. Download or clone this repository.
+2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
 3. Enable the plugin in the Project Settings under the Plugins tab.
 
 ## How to Use 
