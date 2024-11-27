@@ -26,29 +26,6 @@ extends ColorRect
 @onready var sfx_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/SFXSlider
 @onready var voice_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/VoiceSlider
 
-# dictionaries for options dropdowns
-var window_modes : Dictionary = {"Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN,
-								 "Window" : DisplayServer.WINDOW_MODE_WINDOWED,
-								 "Window Maximized" : DisplayServer.WINDOW_MODE_MAXIMIZED}
-
-# You can modify these window resolutions to your liking, but there has to be at least ONE entry
-# Also modify the settings_data_resource to the default resolution.
-# check the settings_data_resource.gd file to see what the default index is
-var resolutions : Dictionary = {"1280x720"  :  Vector2i(1280, 720),  # index 0
-								"1440x810"  :  Vector2i(1440, 810),  # index 1
-								"1600x900"  :  Vector2i(1600, 900),  # index 2
-								"1920x1080" :  Vector2i(1920, 1080)} # index 3
-
-
-var msaa_modes : Dictionary =  {"None": Viewport.MSAA_DISABLED,
-								"2x" : Viewport.MSAA_2X,
-								"4x" : Viewport.MSAA_4X,
-								"8x" : Viewport.MSAA_8X}
-
-var fsr_modes : Dictionary =  { "Bilinear": Viewport.SCALING_3D_MODE_BILINEAR,
-								"FSR 1.0": Viewport.SCALING_3D_MODE_FSR,
-								"FSR 2.2": Viewport.SCALING_3D_MODE_FSR2}
-
 # what is selected from drop downs
 var window_mode_selected
 var resolution_mode_selected
@@ -133,7 +110,7 @@ func _process(_delta: float) -> void:
 		last_monitor_count = DisplayServer.get_screen_count()
 		
 		if renderer != 1: # cannot change resolution on mobile devices?
-			if window_mode_option.selected == 1:
+			if window_mode_option.selected == 0:
 				resolution_option.disabled = false
 			else:
 				resolution_option.disabled = true
@@ -161,9 +138,9 @@ func load_settings():
 
 		# No windows or resolution on Web
 		if OS.get_name() != "Web":
-			for window_mode in window_modes:
+			for window_mode in settings_data.window_modes:
 				window_mode_option.add_item(window_mode)
-			for resolution in resolutions:
+			for resolution in settings_data.resolutions:
 				resolution_option.add_item(resolution)
 			
 			set_window_mode(settings_data.window_mode, settings_data.window_mode_index)
@@ -243,7 +220,7 @@ func set_resolution(resolution: Vector2i, resolution_index : int):
 	settings_data.resolution = resolution
 	settings_data.resolution_index = resolution_index
 	
-	if settings_data.window_mode_index == 1:
+	if settings_data.window_mode_index == 0:
 		DisplayServer.window_set_size(resolution)
 		DisplayServer.window_set_position(DisplayServer.screen_get_size(0)*0.5 - resolution*0.5)
 		
@@ -291,19 +268,19 @@ func set_monitor_options() -> void:
 	screen_option_button.select(select_i)
 	
 func _on_window_mode_button_item_selected(index):
-	window_mode_selected = window_modes.get(window_mode_option.get_item_text(index)) as int
+	window_mode_selected = settings_data.window_modes.get(window_mode_option.get_item_text(index)) as int
 	set_window_mode(window_mode_selected, index)
 
 func _on_resolution_option_button_item_selected(index):
-	resolution_mode_selected = resolutions.get(resolution_option.get_item_text(index)) as Vector2i
+	resolution_mode_selected = settings_data.resolutions.get(resolution_option.get_item_text(index)) as Vector2i
 	set_resolution(resolution_mode_selected, index)
 
 func _on_msaa_option_button_item_selected(index):
-	msaa_mode_selected = msaa_modes.get(msaa_option.get_item_text(index)) as int
+	msaa_mode_selected = settings_data.msaa_modes.get(msaa_option.get_item_text(index)) as int
 	set_msaa(msaa_mode_selected, index)
 
 func _on_fsr_option_button_item_selected(index):
-	fsr_mode_selected = fsr_modes.get(fsr_option.get_item_text(index)) as int
+	fsr_mode_selected = settings_data.fsr_modes.get(fsr_option.get_item_text(index)) as int
 	set_fsr(fsr_mode_selected, index)
 
 func _on_fxaa_check_box_toggled(toggled_on):
