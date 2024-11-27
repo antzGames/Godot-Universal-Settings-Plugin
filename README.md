@@ -157,6 +157,10 @@ UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Ve
 
 This is an ultra minimalist demo of the plugin.  Its only 4 lines of code!
 
+It uses the default theme of the project.
+
+You will need to set this scene as `Set as Main Scene` in the editor to run this demo.
+
 ```gdscript
 func _ready() -> void:
 	DebugMenu.style = DebugMenu.Style.VISIBLE_DETAILED
