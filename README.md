@@ -230,3 +230,13 @@ There are some quality settings that are supported across all renderers that cou
 ## Attribution and License
 
 This plugin is licensed under the MIT License.
+
+Godot 3D plush: https://fr3nkd.gumroad.com/l/vhfvy
+Godot Debug Menu: https://github.com/godot-extended-libraries/godot-debug-menu
+
+Themes:
+
+Godot Windows 10 Themes: https://github.com/mr-dreich/Godot-Windows-10-Theme
+Godot Clashy theme: https://github.com/wadlo/Themey
+Kenney UI Theme: Kenney's UI Pack: https://kenney.nl/assets/ui-pack
+
