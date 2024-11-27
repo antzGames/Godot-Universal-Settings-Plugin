@@ -18,10 +18,10 @@ class_name SettingsDataResource
 # "1600x900"  :  Vector2i(1600, 900)  # index 1
 # "1920x1080" :  Vector2i(1920, 1080) # index 2
 
-# The following is the default window resolution. 
+# The following is the default window resolution.   This will override any project settings.
 # This Vector2i needs to be in resolutions dictionary in universal_settings_menu.gd
-@export var resolution : Vector2i = Vector2i(1920,1080)  
-@export var resolution_index : int = 2 # this needs to be the correct index in the resolutions dictionary
+@export var resolution : Vector2i = Vector2i(1440,810)  
+@export var resolution_index : int = 0 # this needs to be the correct index in the resolutions dictionary
 
 @export var msaa_3d = 2        # default MSAA set to 4X
 @export var msaa_3d_index = 2  # 0 = none, 1 = 2X, 2 = 4X, 3 = 8X
