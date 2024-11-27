@@ -10,7 +10,10 @@ and audio settings, ensuring a consistent experience across platforms.
 
 ## Table of Contents
 
-[Feature](https://github.com/antzGames/Godot-Universal-Settings-Plugin/tree/master?tab=readme-ov-file#features)
+[Features](#features)
+[Supported Settings](#supported-settings)
+	[Graphics Settings](#graphics-settings)
+	[Audio Settings](#audio-settings)
 
 ## Features
 
