@@ -116,9 +116,22 @@ The demo project has examples on how to apply themes, tab size, and tab color.
 
 Unfortunately, I am not dynamically quering audio buses layouts.  Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they need to be called Music, SFX, and Voice if you do not want to modify the plugin.
 
-This is the easiest approach.  Just conigufure your audio bus to look like the following:
+This is the easiest approach.  Just configure your audio bus to the following:
 
 <img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
+
+The other option is to update the name of the audio bus right on the plugin scene.  This can be does in the Inspector of the editor.
+
+To change the name of the plugin's audio bus follow these instrcutions:
+
+1. Open the `universal_settings_menu.tscn` scene in the `res://addons/universal_settings/scenes/` folder.
+2. Expand the nodes until you see the `Audio` TabBar node.
+3. Expand all the `Audio` TabBar children.
+4. You should see a node structure as shown in the image below.
+5. Select `VoiceSlider` node as this is most likely the audio bus name you will want to change.
+6. Change `Bus Name` property in the Inspector to the name of your audio bus.
+
+
 
 ## Configuring default settings
 
