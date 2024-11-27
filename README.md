@@ -41,7 +41,7 @@ The following graphics options are dynamically adjusted based on the renderer:
 
 ### Audio Settings
 
-The plugin supports ajusting and saving the volume of up to 4 audio buses. The plugin has configured four predefined audio bus names:
+The plugin supports adjusting and saving the volume of up to 4 audio buses. The plugin includes four predefined audio bus names:
 
 - Master
 - Music
@@ -92,12 +92,12 @@ on the path you provide. To apply a theme:
 ```gdscript
 UniversalSettings.set_theme_to("res://path/to/theme/mytheme.tres")
 ```
-You can also change the size of tab conatiner by providing a `Vector2` to the function call:
+You can also change the size of tab container by providing a `Vector2` to the function call:
 
 ```gdscript
 UniversalSettings.set_theme_to("res://path/to/theme/mytheme.tres", Vector2(550,510))
 ```
-You can also assign a self modulate color to the tab conatiner:
+You can also assign a self modulate color to the tab container:
 
 ```gdscript
 UniversalSettings.set_theme_to("res://path/to/theme/mytheme.tres", Vector2(550,510), Color.BLUE)
@@ -114,7 +114,7 @@ Both the initial default value of all the settings and the saved setting configu
 The source code is well documented, so if you need to change the default settings on the first time a user plays your game
 then this is the file you need to modify.
 
-Keep in mind that settings in this file will superceed any project settings.  An example of this is the window resolution or window mode.
+Keep in mind that settings in this file will supersede any project settings.  An example of this is the window resolution or window mode.
 
 ## How to delete my saved settings
 
@@ -126,7 +126,7 @@ The XXX is the `application/config/version` of your project.
 
 This makes it easy to force a reset of any saved settings on previous game versions of your user install base by just incrementing the version in your project.  
 
-Deleting saved settings on the HTML/Web builds is possible by purging local browser storage, and those instruction are browser specific.
+To delete saved settings on HTML/Web builds, purge local browser storage. These instructions are browser-specific.
 
 ## Demos included
 
