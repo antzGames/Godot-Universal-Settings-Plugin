@@ -171,14 +171,19 @@ Keep in mind if the plugin does not find your bus with the name you provided, th
 
 <img src="https://github.com/user-attachments/assets/5e4711e6-7590-48ed-81f5-589eddaa323f" width="582">
 
-## Configuring default settings
+## Configuring default settings and drop downs
 
-Both the initial default value of all the settings and the saved setting configuration are stored in a `Resource` file called `settings_data_resource.gd`.
+The main configuration of the settings screen such as:
+
+- dictionaries that configure the drop downs for window modes, resolutions, MSAA modes, and 3D scaling modes.
+- default values of all settings, used when the game is run for the first time without settings being saved.
+
+is stored as `Resource` file called `settings_data_resource.gd`.  It is located in the `config` directory of the plugin.
 
 The source code is well documented, so if you need to change the default settings on the first time a user plays your game
-then this is the file you need to modify.
+or you need change the resolution list, then this is the file you need to modify.
 
-Keep in mind that settings in this file will supersede any project settings.  An example of this is the window resolution or window mode.
+Keep in mind that the default settings in this file will supersede any project settings.  An example of this is the window resolution or window mode.
 
 ## How to delete my saved settings
 
