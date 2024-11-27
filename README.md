@@ -10,10 +10,10 @@ and audio settings, ensuring a consistent experience across platforms.
 
 ## Table of Contents
 
-[Features](#features)
-[Supported Settings](#supported-settings)
-	[Graphics Settings](#graphics-settings)
-	[Audio Settings](#audio-settings)
+- [Features](#features)
+- [Supported Settings](#supported-settings)
+  -	[Graphics Settings](#graphics-settings)
+  - [Audio Settings](#audio-settings)
 
 ## Features
 
