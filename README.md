@@ -55,7 +55,7 @@ Here is a table of the supported settings based on the renderer:
 
 ![supported](https://github.com/user-attachments/assets/a79b268c-8951-4b01-8048-0be181473e0d)
 
-## Why use this plugin
+## Why Use This Plugin
 
 **Seamless Exporting**:
 No code modifications are required when exporting to HTML/Web or mobile platforms. The settings screen works consistently across all build targets.
@@ -91,7 +91,7 @@ UniversalSettings.show_screen()
 3. Change any setting you like.  Changes are applied in real time.
 4. Clicking `Save` on the settings screen will save the settings and hide the settings screen.
 
-### Show me a complete step by step example
+### Show Me a Complete Step-by-Step Example
 
 1. Enable the plugin as described above.
 2. Create a scene.  
@@ -111,7 +111,7 @@ func _input(event: InputEvent) -> void:
 6. Pressing `SPACE` or `ENTER` will bring up the settings screen.
 7. Clicking `Save` will save your settings.
 
-## How to apply a theme
+## How to Apply a Theme
 
 You have the ability to apply a theme to the settings screen.  The plugin can load any theme based 
 on the path you provide. To apply a theme:
@@ -132,17 +132,17 @@ UniversalSettings.set_theme_to("res://path/to/theme/mytheme.tres", Vector2(550,5
 
 The demo project has examples on how to apply themes, tab size, and tab color.
 
-## Audio bus configuration
+## Audio Bus Configuration
 
-Unfortunately, I am not dynamically quering the audio buses from the project because it complicates keeping the saved settings in sync with changes to the project's audio buses information.  I might do it in the future.
+Unfortunately, I am not dynamically querying the audio buses from the project because it complicates keeping the saved settings in sync with changes to the project's audio buses information.  I might do it in the future.
 
 This means you have 3 options.
 
-### 1. Lazy way - Do nothing
+### Option 1: Do Nothing
 
-Espeically good choice for a newly created projects.  Doing nothing means that only the `Master` bus volume control will show up on the settings menu.  If this is all you need, you do not have to do anything, ever.
+Especially good choice for a newly created projects.  Doing nothing means that only the `Master` bus volume control will show up on the settings menu.  If this is all you need, you do not have to do anything, ever.
 
-### 2. Easy way - Configure your audio bus names to match the plugin
+### Option 2: Configure Your Audio Bus Names to Match the Plugin
 
 Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they **need** to be called Music, SFX, and Voice > **IF you do not want to modify the plugin**.
 
@@ -150,11 +150,11 @@ This is the easiest approach.  Just configure your audio buses to the following:
 
 <img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
 
-### 3. Correct way - Update plugin to match your audio bus names
+### Option 3: Update Plugin for Custom Audio Bus Names
 
 The other option is to update the name of the audio bus right in the plugin scene.  This can be done in the Inspector of the editor.
 
-To change the name of the plugin's audio bus follow these instrcutions:
+To change the name of the plugin's audio bus follow these instructions:
 
 1. Open the `universal_settings_menu.tscn` scene in the `res://addons/universal_settings/scenes/` folder.
 2. Expand the nodes until you see the `Audio` TabBar node.
@@ -171,7 +171,7 @@ Keep in mind if the plugin does not find your bus with the name you provided, th
 
 <img src="https://github.com/user-attachments/assets/5e4711e6-7590-48ed-81f5-589eddaa323f" width="582">
 
-## Configuring default settings and drop downs
+## Configuring Default Settings and Dropdowns
 
 The main configuration of the settings screen such as:
 
@@ -185,7 +185,7 @@ or you need change the resolution list, then this is the file you need to modify
 
 Keep in mind that the default settings in this file will supersede any project settings.  An example of this is the window resolution or window mode.
 
-## How to delete my saved settings
+## How to Delete My Saved Settings
 
 If you want to delete your saved settings on desktop:
 
@@ -197,11 +197,11 @@ This makes it easy to force a reset of any saved settings on previous game versi
 
 To delete saved settings on HTML/Web builds, purge local browser storage. These instructions are browser-specific.
 
-## Demos included
+## Demos Included
 
 **Godot 3D Plush Test**:
 
-This is a dynamic 3D scene with the Godot 3D plush model with a buch of boxes raining down.
+This is a dynamic 3D scene with the Godot 3D plush model with a collection of boxes raining down.
 
 This is a good demo to show how to change the theme, tab container size, and color of the settings screen:
 
@@ -231,10 +231,10 @@ func _input(event: InputEvent) -> void:
 ```	
 <img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
 
-## Any video tutorials?
+## Any Video Tutorials?
 
 
-## More settings planned?
+## More Settings Planned?
 
 The `Forward+` renderer has many more graphics settings that are available.  They include:
 
@@ -252,7 +252,7 @@ There are some quality settings that are supported across all renderers that cou
 - Shadow Filtering (direction and positional)
 - Model quality (`mesh_lod_threshold`)
 
-## Attribution and License
+## Attribution And License
 
 Models:
 
