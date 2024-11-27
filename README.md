@@ -103,7 +103,7 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 
 ## How to Use 
 
-1. Enable the plugin as described above.
+1. Enable the plugin as described [above](#installation).
 2. Call the settings screen with the following code:
 ```gdscript
 UniversalSettings.show_screen()
@@ -113,10 +113,11 @@ UniversalSettings.show_screen()
 
 ### Show Me a Complete Step-by-Step Example
 
-1. Enable the plugin as described above.
-2. Create a scene.  
-3. Attach a script to it. 
-4. Add the following code.
+1. Create a new Godot project.
+2. Enable the plugin as described above.
+3. Create a scene.  
+4. Attach a script to it. 
+5. Add the following code  to the script:
 
 ```gdscript
 func _ready() -> void:
@@ -127,9 +128,9 @@ func _input(event: InputEvent) -> void:
 		UniversalSettings.show_screen()
 ```	
 
-5. Run your scene.
-6. Pressing `SPACE` or `ENTER` will bring up the settings screen.
-7. Clicking `Save` will save your settings.
+6. Run your scene.
+7. Pressing `SPACE` or `ENTER` will bring up the settings screen.
+8. Clicking `Save` will save your settings.
 
 ## How to Apply a Theme
 
