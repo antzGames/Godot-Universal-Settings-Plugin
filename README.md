@@ -41,14 +41,14 @@ The following graphics options are dynamically adjusted based on the renderer:
 
 ### Audio Settings
 
-The plugin supports setting and saving the volume of 4 audio buses. The plugin includes four predefined buses:
+The plugin supports ajusting and saving the volume of up to 4 audio buses. The plugin has configured four predefined audio bus names:
 
 - Master
 - Music
 - SFX
 - Voice
 
-You can customize which buses appear on the settings screen, with the option to exclude all but the `Master` bus.
+The `Master` bus is mandatory, but if you do not have the remaining audio buses (Music, SFX, Voice) configured in your project, the plugin will automatically not show them in the settings screen.  There is more information about audio settings and configuring audio buses further down.
 
 ## Supported Settings by Renderer
 
@@ -108,6 +108,25 @@ The demo project has examples on how to apply themes, tab size, and tab color.
 ## Audio bus configuration
 
 ## Configuring default settings
+
+Both the initial default value of all the settings and the saved setting configuration are stored in a `Resource` file called `settings_data_resource.gd`.
+
+The source code is well documented, so if you need to change the default settings on the first time a user plays your game
+then this is the file you need to modify.
+
+Keep in mind that settings in this file will superceed any project settings.  An example of this is the window resolution or window mode.
+
+## How to delete my saved settings
+
+If you want to delete your saved settings on desktop:
+
+`Project` > `Open User Data Folder` > `game_data` > `settings_dataXXX.tres`
+
+The XXX is the `application/config/version` of your project.
+
+This makes it easy to force a reset of any saved settings on previous game versions of your user install base by just incrementing the version in your project.  
+
+Deleting saved settings on the HTML/Web builds is possible by purging local browser storage, and those instruction are browser specific.
 
 ## Demos included
 
