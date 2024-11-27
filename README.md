@@ -18,7 +18,7 @@ and audio settings, ensuring a consistent experience across platforms.
 
 **Platform Agnostic**: Works out-of-the-box with HTML/Web builds, mobile, and desktop platforms.
 
-**Customizable Themes**: Supports applying themes to the settings screen, with 4 pre-designed themes included in the demo project.
+**Customizable Themes**: Supports applying themes to the settings screen, with 4 themes included in the demo project.
 
 **Demo Included**: Comes with a sample project featuring the Godot 3D plush to showcase functionality.
 
