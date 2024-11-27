@@ -56,7 +56,6 @@ Here is a table of the supported settings based on the renderer:
 
 ![supported](https://github.com/user-attachments/assets/a79b268c-8951-4b01-8048-0be181473e0d)
 
-
 ## Why Renderer Awareness Matters
 
 **Seamless Exporting**:
@@ -70,17 +69,18 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 
 ## Installation
 
-**Option 1**: Use as a project template
+**Option 1**: Use as a project template.  Best for beginners.
 
 1. Download or clone this repository.
 2. Start creating a new game by making a new scene.
 3. Set your new scene as the main scene.
 
-**Option 2**: Just use as a plugin
+**Option 2**: Use the plugin
 
-1. Download or clone this repository.
+1. Download or clone this repository.  (Godot AssetLib coming soon)
 2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
 3. Enable the plugin in the Project Settings under the Plugins tab.
+4. If you have more than the default `Master` audio bus, make sure you rename them to Music, SFX.
 
 ## How to Use 
 
@@ -137,6 +137,37 @@ This makes it easy to force a reset of any saved settings on previous game versi
 To delete saved settings on HTML/Web builds, purge local browser storage. These instructions are browser-specific.
 
 ## Demos included
+
+**Godot 3D Plush Test**:
+
+This is a dynamic 3D scene with the Godot 3D plush model with a buch of boxes raining down.
+
+This is a good demo to show how to change the theme, tab container size, and color of the settings screen:
+
+```gdscript
+# If no theme is set then the default Godot theme is used,
+# but you can easily change themes... pick one!
+UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Vector2(550,510), Color(1,1,1,0.5))
+#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_light/theme.tres", Vector2(550, 345), Color(0,0.471,0.831,0.5))
+#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_dark/theme.tres", Vector2(550, 345), Color(1,1,1,0.5))
+#UniversalSettings.set_theme_to("res://demo/assets/themes/kenney/kenneyUI.tres")
+```
+
+**Blank Scene**:
+
+This is an ultra minimalist demo of the plugin.  Its only 4 lines of code!
+
+```gdscript
+func _ready() -> void:
+	DebugMenu.style = DebugMenu.Style.VISIBLE_DETAILED
+	UniversalSettings.show_screen()
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("ui_accept"): 
+		UniversalSettings.show_screen()  # will do nothing if already visible
+```	
+
+## Any video tutorials?
 
 ## Attribution and License
 
