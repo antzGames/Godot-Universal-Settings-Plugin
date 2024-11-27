@@ -191,12 +191,10 @@ You will need to set this scene as `Set as Main Scene` in the editor to run this
 
 ```gdscript
 func _ready() -> void:
-	DebugMenu.style = DebugMenu.Style.VISIBLE_DETAILED
 	UniversalSettings.show_screen()
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_released("ui_accept"): 
-		UniversalSettings.show_screen()  # will do nothing if already visible
+	if event.is_action_released("ui_accept"): UniversalSettings.show_screen()
 ```	
 <img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
 
