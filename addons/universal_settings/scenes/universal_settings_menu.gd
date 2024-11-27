@@ -196,7 +196,7 @@ func load_settings():
 				vysnc_checkbox.button_pressed = false
 			_on_v_sync_check_box_toggled(vysnc_checkbox.button_pressed)
 	
-	DebugMenu.update_settings_label()
+
 		
 func set_fsr(mode: int, index: int):
 	match mode:
@@ -211,7 +211,7 @@ func set_fsr(mode: int, index: int):
 	
 	settings_data.fsr_mode = mode
 	settings_data.fsr_mode_index = index
-	DebugMenu.update_settings_label()
+
 
 func set_msaa(mode: int, index: int):
 	match mode:
@@ -228,7 +228,7 @@ func set_msaa(mode: int, index: int):
 			
 	settings_data.msaa_3d = mode
 	settings_data.msaa_3d_index = index
-	DebugMenu.update_settings_label()
+
 
 func set_resolution(resolution: Vector2i, resolution_index : int):
 	settings_data.resolution = resolution
@@ -237,7 +237,7 @@ func set_resolution(resolution: Vector2i, resolution_index : int):
 	if settings_data.window_mode_index == 1:
 		DisplayServer.window_set_size(resolution)
 		DisplayServer.window_set_position(DisplayServer.screen_get_size(0)*0.5 - resolution*0.5)
-	DebugMenu.update_settings_label()		
+		
 
 func set_window_mode(window_mode : int, window_mode_index: int):
 	match window_mode:
@@ -254,7 +254,7 @@ func set_window_mode(window_mode : int, window_mode_index: int):
 
 	settings_data.window_mode = window_mode
 	settings_data.window_mode_index = window_mode_index
-	DebugMenu.update_settings_label()
+
 	
 func quit_menu():
 	save_settings()
@@ -280,7 +280,7 @@ func set_monitor_options() -> void:
 		screen_option_button.add_item("Monitor %s%s" % [i,is_current])
 	
 	screen_option_button.select(select_i)
-	DebugMenu.update_settings_label()
+
 	
 func _on_window_mode_button_item_selected(index):
 	window_mode_selected = window_modes.get(window_mode_option.get_item_text(index)) as int
@@ -305,7 +305,7 @@ func _on_fxaa_check_box_toggled(toggled_on):
 	else:
 		settings_data.fxaa = Viewport.SCREEN_SPACE_AA_DISABLED
 		get_tree().get_root().get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
-	DebugMenu.update_settings_label()
+
 
 func _on_taa_check_box_toggled(toggled_on):
 	if toggled_on:
@@ -316,7 +316,7 @@ func _on_taa_check_box_toggled(toggled_on):
 		settings_data.taa = false
 		if OS.get_name() != "Web":
 			get_tree().get_root().get_viewport().use_taa = false
-	DebugMenu.update_settings_label()
+
 
 func _on_v_sync_check_box_toggled(toggled_on):
 	if toggled_on:
@@ -325,7 +325,7 @@ func _on_v_sync_check_box_toggled(toggled_on):
 	else:
 		settings_data.vsync = DisplayServer.VSYNC_DISABLED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	DebugMenu.update_settings_label()
+
 	
 func _on_scale_3D_value_changed(v : int):
 	var value : float
@@ -356,7 +356,7 @@ func _on_scale_3D_value_changed(v : int):
 
 	scale_3d_slider.value = v
 	get_viewport().scaling_3d_scale = value
-	DebugMenu.update_settings_label()
+
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	# the following with grab the focus of the SAVE button if a controller is connected

@@ -1,7 +1,6 @@
 extends Node3D
 
 func _ready() -> void:
-	DebugMenu.style = DebugMenu.Style.VISIBLE_DETAILED
 	UniversalSettings.show_screen()
 	
 func _input(event: InputEvent) -> void:

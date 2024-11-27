@@ -22,7 +22,6 @@ config/image=""
 
 [autoload]
 
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 UniversalSettings="*res://addons/universal_settings/scenes/universal_settings_menu.tscn"
 
 [display]
@@ -32,7 +31,7 @@ window/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/universal_settings/plugin.cfg")
+enabled=PackedStringArray("res://addons/universal_settings/plugin.cfg")
 
 [rendering]
 

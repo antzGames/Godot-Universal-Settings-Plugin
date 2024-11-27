@@ -229,8 +229,9 @@ There are some quality settings that are supported across all renderers that cou
 
 ## Attribution and License
 
+Models:
+
 - Godot 3D plush: https://fr3nkd.gumroad.com/l/vhfvy
-- Godot Debug Menu: https://github.com/godot-extended-libraries/godot-debug-menu
 
 Themes:
 

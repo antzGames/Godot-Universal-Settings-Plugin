@@ -14,8 +14,7 @@ var current_box_count: int
 const ANTZ_BOX = preload("assets/models/antz_box.tscn")
 
 func _ready():
-	DebugMenu.style = DebugMenu.Style.VISIBLE_DETAILED
-	
+
 	# If no theme is set then the default Godot theme is used,
 	# but you can easily change themes... pick one!
 	UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Vector2(550,510), Color(1,1,1,0.5))
