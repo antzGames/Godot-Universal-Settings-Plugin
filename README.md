@@ -114,13 +114,17 @@ The demo project has examples on how to apply themes, tab size, and tab color.
 
 ## Audio bus configuration
 
+### Easy way - Configure your bus names to match the plugin
+
 Unfortunately, I am not dynamically quering audio buses layouts.  Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they need to be called Music, SFX, and Voice if you do not want to modify the plugin.
 
 This is the easiest approach.  Just configure your audio bus to the following:
 
 <img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
 
-The other option is to update the name of the audio bus right on the plugin scene.  This can be does in the Inspector of the editor.
+### Update plugin to match your audio bus names
+
+The other option is to update the name of the audio bus right in the plugin scene.  This can be done in the Inspector of the editor.
 
 To change the name of the plugin's audio bus follow these instrcutions:
 
@@ -131,7 +135,7 @@ To change the name of the plugin's audio bus follow these instrcutions:
 5. Select `VoiceSlider` node as this is most likely the audio bus name you will want to change.
 6. Change `Bus Name` property in the Inspector to the name of your audio bus.
 
-
+<img src="https://github.com/user-attachments/assets/5e4711e6-7590-48ed-81f5-589eddaa323f" width="582">
 
 ## Configuring default settings
 
