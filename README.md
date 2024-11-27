@@ -91,6 +91,26 @@ UniversalSettings.show_screen()
 3. Change any setting you like.  Changes are applied in real time.
 4. Clicking `Save` on the settings screen will save the settings and hide the settings screen.
 
+### Show me a complete step by step example
+
+1. Enable the plugin as described above.
+2. Create a scene.  
+3. Attach a script to it. 
+4. Add the following code.
+
+```gdscript
+func _ready() -> void:
+	pass
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_released("ui_accept"):
+		UniversalSettings.show_screen()
+```	
+
+5. Run your scene.
+6. Pressing `SPACE` or `ENTER` will bring up the settings screen.
+7. Clicking `Save` will save your settings.
+
 ## How to apply a theme
 
 You have the ability to apply a theme to the settings screen.  The plugin can load any theme based 
