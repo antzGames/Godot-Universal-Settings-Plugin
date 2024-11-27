@@ -23,14 +23,14 @@ func _ready():
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_dark/theme.tres", Vector2(550, 345), Color(1,1,1,0.5))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/kenney/kenneyUI.tres")
 	
-	UniversalSettings.show_menu()
+	UniversalSettings.show_screen()
 	camera_3d.position = Vector3(0, 15, 15)
 
 func _input(event: InputEvent):
 	if event.is_action("ui_cancel"):
 		get_tree().quit()
 	elif event.is_action_released("ui_accept"): 
-		UniversalSettings.show_menu()  # will do nothing if already visible
+		UniversalSettings.show_screen()  # will do nothing if already visible
 
 func _physics_process(delta):
 	timer += delta

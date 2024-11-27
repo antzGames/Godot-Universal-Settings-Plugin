@@ -260,7 +260,7 @@ func quit_menu():
 	save_settings()
 	animation_player.play("HideSettings")
 
-func show_menu():
+func show_screen():
 	if visible: return
 	animation_player.play("ShowSettings")
 	

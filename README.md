@@ -79,7 +79,7 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 1. Enable the plugin as described above.
 2. Call the settings screen with the following code:
 ```gdscript
-UniversalSettings.show()
+UniversalSettings.show_screen()
 ```
 3. Change any setting you like.  Changes are applied in real time.
 4. Clicking `Save` on the settings screen will save the settings and hide the settings screen.
