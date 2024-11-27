@@ -6,6 +6,9 @@ and HTML web builds.
 This plugin simplifies user settings management by saving and reloading configurations for graphics 
 and audio settings, ensuring a consistent experience across platforms.
 
+<img src="https://github.com/user-attachments/assets/759c17c0-0a41-473d-bedc-4e3e22cde3db" width="720">
+
+
 ## Features
 
 **Persistent Settings**: Saves user graphics and audio preferences, reloading them on game startup.
@@ -51,7 +54,8 @@ You can customize which buses appear on the settings screen, with the option to 
 
 Here is a table of the supported settings based on the renderer:
 
-![supported](https://github.com/user-attachments/assets/45b5aff0-afc3-4c18-a041-e2496e03ecd6)
+![supported](https://github.com/user-attachments/assets/a79b268c-8951-4b01-8048-0be181473e0d)
+
 
 ## Why Renderer Awareness Matters
 
