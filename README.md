@@ -55,7 +55,7 @@ Here is a table of the supported settings based on the renderer:
 
 ![supported](https://github.com/user-attachments/assets/a79b268c-8951-4b01-8048-0be181473e0d)
 
-## Why Renderer Awareness Matters
+## Why use this plugin
 
 **Seamless Exporting**:
 No code modifications are required when exporting to HTML/Web or mobile platforms. The settings screen works consistently across all build targets.
