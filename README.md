@@ -114,11 +114,13 @@ The demo project has examples on how to apply themes, tab size, and tab color.
 
 ## Audio bus configuration
 
-Unfortunately, I am not dynamically quering the audio buses from the project.  This means you have 3 options.
+Unfortunately, I am not dynamically quering the audio buses from the project because it complicates keeping the saved settings in sync with changes to the project's audio buses information.  I might do it in the future.
+
+This means you have 3 options.
 
 ### 1. Lazy way - Do nothing
 
-Doing nothing means that only the `Master` bus volume control will show up on the settings menu.  If this is all you need, you do not have to do anything.
+Espeically good choice for a newly created projects.  Doing nothing means that only the `Master` bus volume control will show up on the settings menu.  If this is all you need, you do not have to do anything, ever.
 
 ### 2. Easy way - Configure your audio bus names to match the plugin
 
