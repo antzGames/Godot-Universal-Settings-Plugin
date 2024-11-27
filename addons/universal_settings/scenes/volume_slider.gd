@@ -9,9 +9,7 @@ var percent: float
 func _ready():
 	if AudioServer.get_bus_index((bus_name)) == -1:
 		visible = false
-		printerr("Audio bus named: ", bus_name, " not found. Disabling this setting.")
-		printerr("Make sure the UniversalSettings plugin audio bus names and your project's audio bus match.")
-		printerr("For more information see: https://github.com/antzGames/Godot-Universal-Settings-Plugin?tab=readme-ov-file#audio-bus-configuration")
+		print("Audio bus named: '", bus_name, "' not found. Disabling this named audio bus.")
 		return
 		
 	bus_index = AudioServer.get_bus_index((bus_name))
