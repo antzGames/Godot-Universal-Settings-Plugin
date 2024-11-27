@@ -14,6 +14,19 @@ and audio settings, ensuring a consistent experience across platforms.
 - [Supported Settings](#supported-settings)
   -	[Graphics Settings](#graphics-settings)
   - [Audio Settings](#audio-settings)
+- [Supported Settings by Renderer](#supported-settings-by-renderer)
+- [Why Use This Plugin](#why-use-this-plugin)
+- [Installation](#installation)
+- [How to Use](#how-to-use)
+- [Show Me a Complete Step-by-Step Example](#show-me-a-complete-step-by-step-example)
+- [How to Apply a Theme](#how-to-apply-a-theme)
+- [Audio Bus Configuration](#audio-bus-configuration)
+- [Configuring Default Settings and Dropdowns](#configuring-default-settings-and-dropdowns)
+- [How to Delete My Saved Settings](#how-to-delete-my-saved-settings)
+- [Demos Included](#demos-included)
+- [Video Tutorial](#video-tutorials)
+- [More Settings Planned?](#more-settings-planned)
+- [Attribution And License](#attribution-and-license)
 
 ## Features
 
@@ -238,7 +251,7 @@ func _input(event: InputEvent) -> void:
 ```	
 <img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
 
-## Any Video Tutorials?
+## Video Tutorial
 
 
 ## More Settings Planned?
