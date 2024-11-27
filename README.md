@@ -208,6 +208,25 @@ func _input(event: InputEvent) -> void:
 
 ## Any video tutorials?
 
+
+## More settings planned?
+
+The `Forward+` renderer has many more graphics settings that are available.  They include:
+
+- SSR
+- SSAO
+- SSIL
+- SDFGI
+- Volumetric Fog
+
+Adding these settings to this plugin should be easy, as all I need to do is make them visible only when the renderer is set to `Forward+`.  This might be available in the future.
+
+There are some quality settings that are supported across all renderers that could be supported in this plugin.  They are:
+
+- Shadow resolution (unfortunately if you change the shadow resolution you need to tweak `shadow_bias`)
+- Shadow Filtering (direction and positional)
+- Model quality (`mesh_lod_threshold`)
+
 ## Attribution and License
 
 This plugin is licensed under the MIT License.
