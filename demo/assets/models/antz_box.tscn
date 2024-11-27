@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpcuvqx0gyt8k"]
+
+[ext_resource type="Script" path="res://demo/assets/models/antz_box.gd" id="1_7dfid"]
+[ext_resource type="Texture2D" uid="uid://d2yw1rbmuefqo" path="res://demo/assets/images/antz4_new.png" id="1_rj52o"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f0qyy"]
+bounce = 0.77
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oekfy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rdmd"]
+albedo_texture = ExtResource("1_rj52o")
+roughness = 0.0
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_38gm1"]
+material = SubResource("StandardMaterial3D_0rdmd")
+
+[node name="AntzBox" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_f0qyy")
+gravity_scale = 0.16
+script = ExtResource("1_7dfid")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_oekfy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_38gm1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 25.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,7 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[ext_resource type="DynamicFontData" uid="uid://cq1d7umf44rpk" path="res://demo/assets/themes/windows_10_light/assets/fonts/segoeUI/Segoe UI.ttf" id="1"]
+
+[resource]
+use_mipmaps = true
+font_data = ExtResource( 1 )

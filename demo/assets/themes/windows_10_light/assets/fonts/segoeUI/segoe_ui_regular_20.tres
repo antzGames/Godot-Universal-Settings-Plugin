@@ -1,0 +1,16 @@
+[gd_resource type="FontFile" load_steps=2 format=3 uid="uid://cw3d0k4a4vqi8"]
+
+[ext_resource type="FontFile" uid="uid://cq1d7umf44rpk" path="res://demo/assets/themes/windows_10_light/assets/fonts/segoeUI/Segoe UI.ttf" id="1"]
+
+[resource]
+fallbacks = Array[Font]([ExtResource("1")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0

@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://b6yvra0h67504"]
+
+[ext_resource type="Script" path="res://demo/intro.gd" id="1_khkbi"]
+[ext_resource type="Texture2D" uid="uid://di7i1ttqxn2li" path="res://demo/assets/images/texture_13flip.png" id="2_owhji"]
+[ext_resource type="Texture2D" uid="uid://bpufk3l3d0tm8" path="res://demo/assets/images/logo.webp" id="7_m8jny"]
+[ext_resource type="PackedScene" uid="uid://c7hyl5tbflymn" path="res://demo/assets/models/godot_plushV2.glb" id="8_poqn3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sn3s7"]
+albedo_texture = ExtResource("7_m8jny")
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_rag22"]
+material = SubResource("StandardMaterial3D_sn3s7")
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n6r3"]
+size = Vector3(800, 1, 800)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbkkj"]
+albedo_texture = ExtResource("2_owhji")
+roughness = 0.6
+uv1_scale = Vector3(20, 20, 20)
+texture_filter = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_mid7g"]
+material = SubResource("StandardMaterial3D_pbkkj")
+size = Vector3(200, 1, 200)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dx6py"]
+
+[sub_resource type="Sky" id="Sky_c1uy6"]
+sky_material = SubResource("ProceduralSkyMaterial_dx6py")
+
+[sub_resource type="Environment" id="Environment_abs0u"]
+background_mode = 2
+sky = SubResource("Sky_c1uy6")
+sky_rotation = Vector3(0, -0.785398, 0)
+ambient_light_sky_contribution = 0.2
+tonemap_mode = 3
+sdfgi_use_occlusion = true
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w85no"]
+
+[node name="Intro" type="Node3D"]
+script = ExtResource("1_khkbi")
+
+[node name="Facade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 10, 0.55)
+visible = false
+mesh = SubResource("QuadMesh_rag22")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0n6r3")
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_mid7g")
+skeleton = NodePath("../..")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_abs0u")
+camera_attributes = SubResource("CameraAttributesPhysical_w85no")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.806383, 0.374985, -0.457311, 0, 0.773276, 0.634069, 0.591394, -0.511303, 0.623557, 0, 4.81859, 18.3628)
+shadow_enabled = true
+
+[node name="godot_plushV2" parent="." instance=ExtResource("8_poqn3")]
+transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 0, 0, 0)
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25869, 9.1543)
+far = 200.0

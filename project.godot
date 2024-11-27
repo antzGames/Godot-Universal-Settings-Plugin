@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Universal Settings Plugin"
+config/description="Provides renderer aware settings screen."
+config/version="0.1"
+run/main_scene="res://demo/plush_test.tscn"
+config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://demo/assets/AntzBanner1.png"
+config/icon="res://antz_512.png"
+boot_splash/minimum_display_time=500
+config/image=""
+
+[autoload]
+
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+UniversalSettings="*res://addons/universal_settings/scenes/universal_settings_menu.tscn"
+
+[display]
+
+window/size/resizable=false
+window/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/universal_settings/plugin.cfg")
+
+[rendering]
+
+lights_and_shadows/directional_shadow/16_bits=false

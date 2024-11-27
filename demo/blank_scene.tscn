@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxn6ss2d1ft1b"]
+
+[ext_resource type="Script" path="res://demo/blank_scene.gd" id="1_ud84o"]
+
+[sub_resource type="Environment" id="Environment_xtivx"]
+
+[node name="BlankScene" type="Node3D"]
+script = ExtResource("1_ud84o")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xtivx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Instrcutions" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -171.5
+offset_top = -23.0
+offset_right = 171.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "SPACE or ENTER to bring up SETTINGS MENU"
