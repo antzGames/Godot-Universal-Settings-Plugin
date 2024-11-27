@@ -34,7 +34,7 @@ and audio settings, ensuring a consistent experience across platforms.
 
 **One-Line Integration**: A single function call to display the settings screen.
 
-**Renderer Awareness**: Automatically adapts to the current renderer, ensuring feature compatibility (more on this below).
+**Renderer Awareness**: Automatically adapts to the current renderer, ensuring feature compatibility (more on this [below](#supported-settings-by-renderer)).
 
 **Platform Agnostic**: Works out-of-the-box with HTML/Web builds, mobile, and desktop platforms.
 
@@ -99,7 +99,7 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 1. Download or clone this repository.  (Godot AssetLib coming soon)
 2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
 3. Enable the plugin in the Project Settings under the Plugins tab.
-4. See `Audio bus configuration` section below to name your audio bus names correctly.
+4. See `Audio bus configuration` section [below](#audio-bus-configuration) to name your audio bus names correctly.
 
 ## How to Use 
 
@@ -114,7 +114,7 @@ UniversalSettings.show_screen()
 ### Show Me a Complete Step-by-Step Example
 
 1. Create a new Godot project.
-2. Enable the plugin as described above.
+2. Enable the plugin as described [above](#installation).
 3. Create a scene.  
 4. Attach a script to it. 
 5. Add the following code  to the script:
