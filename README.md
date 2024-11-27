@@ -115,6 +115,12 @@ The demo project has examples on how to apply themes, tab size, and tab color.
 
 ## Audio bus configuration
 
+Unfortunately, I am not dynamically quering audio buses layouts.  Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they need to be called Music, SFX, and Voice if you do not want to modify the plugin.
+
+This is the easiest approach.  Just conigufure your audio bus to look like the following:
+
+
+
 ## Configuring default settings
 
 Both the initial default value of all the settings and the saved setting configuration are stored in a `Resource` file called `settings_data_resource.gd`.
