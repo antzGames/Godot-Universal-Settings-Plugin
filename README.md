@@ -79,7 +79,7 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 1. Download or clone this repository.  (Godot AssetLib coming soon)
 2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
 3. Enable the plugin in the Project Settings under the Plugins tab.
-4. If you have more than the default `Master` audio bus, make sure you rename them to Music, SFX.
+4. See `Audio bus configuration` section below to name your audio bus names correctly.
 
 ## How to Use 
 
@@ -134,6 +134,12 @@ To change the name of the plugin's audio bus follow these instrcutions:
 4. You should see a node structure as shown in the image below.
 5. Select `VoiceSlider` node as this is most likely the audio bus name you will want to change.
 6. Change `Bus Name` property in the Inspector to the name of your audio bus.
+
+Keep in mind if the plugin does not find your bus with the name you provided, then it will:
+
+- show an error in the console telling you the bus name was not found.
+- disable this node. This means you will no longer see this audio bus in the settings screen.
+- however the plugin will still work.
 
 <img src="https://github.com/user-attachments/assets/5e4711e6-7590-48ed-81f5-589eddaa323f" width="582">
 
