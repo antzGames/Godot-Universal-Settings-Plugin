@@ -170,6 +170,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("ui_accept"): 
 		UniversalSettings.show_screen()  # will do nothing if already visible
 ```	
+<img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="516">
 
 ## Any video tutorials?
 
