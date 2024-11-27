@@ -126,7 +126,7 @@ Espeically good choice for a newly created projects.  Doing nothing means that o
 
 Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they **need** to be called Music, SFX, and Voice > **IF you do not want to modify the plugin**.
 
-This is the easiest approach.  Just configure your audio bus to the following:
+This is the easiest approach.  Just configure your audio buses to the following:
 
 <img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
 
