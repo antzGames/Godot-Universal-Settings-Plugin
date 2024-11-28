@@ -67,7 +67,7 @@ The plugin supports adjusting and saving the volume of up to 4 audio buses. The 
 - SFX
 - Voice
 
-The `Master` bus is mandatory, but if you do not have the remaining audio buses (Music, SFX, Voice) configured in your project, the plugin will automatically not show them in the settings screen.  There is more information about audio settings and configuring audio buses further down.
+The `Master` bus is mandatory, but if you do not have the remaining audio buses (Music, SFX, Voice) configured in your project, the plugin will automatically not show them in the settings screen.  There is more information about audio settings and configuring audio buses [below](#audio-bus-configuration).
 
 ## Supported Settings by Renderer
 
@@ -94,7 +94,7 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 2. Start creating a new game by making a new scene.
 3. Set your new scene as the main scene.
 
-**Option 2**: Use the plugin
+**Option 2**: Use as a plugin only
 
 1. Download or clone this repository.  (Godot AssetLib coming soon)
 2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
@@ -117,7 +117,7 @@ UniversalSettings.show_screen()
 2. Enable the plugin as described [above](#installation).
 3. Create a scene.  
 4. Attach a script to it. 
-5. Add the following code  to the script:
+5. Add the following code to the script:
 
 ```gdscript
 func _ready() -> void:
@@ -151,7 +151,7 @@ You can also assign a self modulate color to the tab container:
 UniversalSettings.set_theme_to("res://path/to/theme/mytheme.tres", Vector2(550,510), Color.BLUE)
 ```
 
-The demo project has examples on how to apply themes, tab size, and tab color.
+The demo project has examples on how to apply themes, tab container size, and tab container color.
 
 ## Audio Bus Configuration
 
