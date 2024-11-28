@@ -6,7 +6,7 @@ and HTML web builds.
 This plugin simplifies user settings management by saving and reloading configurations for graphics 
 and audio settings, ensuring a consistent experience across platforms.
 
-<img src="https://github.com/user-attachments/assets/759c17c0-0a41-473d-bedc-4e3e22cde3db" width="640">
+<img src="https://github.com/user-attachments/assets/a02846a3-ca69-4ba5-aab0-3f7849631837" width="640">
 
 ## Table of Contents
 
