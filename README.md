@@ -26,6 +26,7 @@ Note: This is a BETA version. It should be tested thoroughly to assess its suita
 - [Configuring Default Settings and Dropdowns](#configuring-default-settings-and-dropdowns)
 - [How to Delete My Saved Settings](#how-to-delete-my-saved-settings)
 - [Demos Included](#demos-included)
+- [Sponza Demo](#sponza-demo)
 - [Video Tutorial](#video-tutorial)
 - [More Settings Planned?](#more-settings-planned)
 - [Attribution And License](#attribution-and-license)
@@ -264,6 +265,8 @@ I have added this plugin to the godot-sponza-4 demo in a fork at:
 https://github.com/antzGames/godot-sponza-4
 
 This projects makes it easier to notice how the MSAA, FSR 1.0, FSR 2.2, TAA, FXAA, and 3D scaling settings affect the scene and FPS.
+
+<img src="https://github.com/user-attachments/assets/cfd21884-0f00-4cd8-972a-468db8a79e28" width="640">
 
 ## Video Tutorial
 
