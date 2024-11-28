@@ -257,6 +257,14 @@ func _input(event: InputEvent) -> void:
 ```	
 <img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
 
+## Sponza Demo
+
+I have added this plugin to the godot-sponza-4 demo in a fork at:
+
+https://github.com/antzGames/godot-sponza-4
+
+This projects makes it easier to notice how the MSAA, FSR 1.0, FSR 2.2, TAA, FXAA, and 3D scaling settings affect the scene and FPS.
+
 ## Video Tutorial
 
 
