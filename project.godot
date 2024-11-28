@@ -35,4 +35,5 @@ enabled=PackedStringArray("res://addons/universal_settings/plugin.cfg")
 
 [rendering]
 
+renderer/rendering_method="mobile"
 lights_and_shadows/directional_shadow/16_bits=false

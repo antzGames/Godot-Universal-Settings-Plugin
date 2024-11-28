@@ -54,18 +54,21 @@ func _ready():
 			renderer = 2  # Forward+ = desktop
 		"mobile":
 			renderer = 1 
-			resolution_option.disabled = true
-			window_mode_option.disabled = true
 			fsr_option.disabled = true
-			
-			vysnc_checkbox.visible = false
 			taa_checkbox.visible = false
+			
+			# disable window mode and resolutions on phones (Android and iOS)
+			if OS.get_name() == "Android" or OS.get_name() == "iOS":
+				resolution_option.disabled = true
+				window_mode_option.disabled = true
+				vysnc_checkbox.visible = false
+
 		"gl_compatibility":
 			renderer = 0
 			fsr_option.disabled = true
-			
 			taa_checkbox.visible = false
 			fxaa_checkbox.visible = false
+
 			if OS.get_name() == "Web":
 				vysnc_checkbox.visible = false
 				resolution_option.disabled = true
