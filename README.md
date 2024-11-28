@@ -75,6 +75,8 @@ Here is a table of the supported settings based on the renderer:
 
 ![supported](https://github.com/user-attachments/assets/50653a74-9f73-414d-a7ae-6e32fec8f5f2)
 
+Mobile renderer `Window Mode` and `Window Resolution` settings not supported if running on Android or iOS, otherwise it is supported.
+
 ## Why Use This Plugin
 
 **Seamless Exporting**:
