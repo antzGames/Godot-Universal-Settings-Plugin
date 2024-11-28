@@ -73,7 +73,7 @@ The `Master` bus is mandatory, but if you do not have the remaining audio buses 
 
 Here is a table of the supported settings based on the renderer:
 
-![supported](https://github.com/user-attachments/assets/a79b268c-8951-4b01-8048-0be181473e0d)
+![supported](https://github.com/user-attachments/assets/50653a74-9f73-414d-a7ae-6e32fec8f5f2)
 
 ## Why Use This Plugin
 
