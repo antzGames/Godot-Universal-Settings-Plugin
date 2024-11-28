@@ -73,9 +73,9 @@ The `Master` bus is mandatory, but if you do not have the remaining audio buses 
 
 Here is a table of the supported settings based on the renderer:
 
-![supported](https://github.com/user-attachments/assets/437f44d6-982c-4b90-bb0c-b26beafbae6e)
+<img src="https://github.com/user-attachments/assets/3fa70c81-26e3-479a-a59b-15c105f5c1fa" width="640">
 
-Mobile renderer's `Window Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
+Mobile renderer's `Monitor Selection`, `Window/Fullscreen Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
 
 ## Why Use This Plugin
 
