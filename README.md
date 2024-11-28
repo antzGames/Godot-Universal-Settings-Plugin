@@ -270,6 +270,10 @@ This projects makes it easier to notice how the MSAA, FSR 1.0, FSR 2.2, TAA, FXA
 
 ## Video Tutorial
 
+Youtube video showing the an overview of the alpha release:
+
+https://youtu.be/li1fdAOqewk
+
 
 ## More Settings Planned?
 
