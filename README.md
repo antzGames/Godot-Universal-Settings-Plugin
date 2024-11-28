@@ -75,7 +75,7 @@ Here is a table of the supported settings based on the renderer:
 
 ![supported](https://github.com/user-attachments/assets/50653a74-9f73-414d-a7ae-6e32fec8f5f2)
 
-Mobile renderer `Window Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
+Mobile renderer's `Window Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
 
 ## Why Use This Plugin
 
@@ -90,13 +90,13 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 
 ## Installation
 
-**Option 1**: Use as a project template.  Best for beginners.
+**Option 1**: Use this repository as a project template.  Best for beginners.
 
 1. Download or clone this repository.
 2. Start creating a new game by making a new scene.
 3. Set your new scene as the main scene.
 
-**Option 2**: Use as a plugin only
+**Option 2**: Use as a plugin only.
 
 1. Download or clone this repository.  (Godot AssetLib coming soon)
 2. Copy the this repository's `addons/universal_settings_plugin` folder into your Godot project under `res://addons/universal_settings_plugin/`.
