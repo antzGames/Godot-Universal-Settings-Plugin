@@ -289,6 +289,10 @@ There are some quality settings that are supported across all renderers that cou
 - Shadow Filtering (direction and positional)
 - Model quality (`mesh_lod_threshold`)
 
+### Keybinds
+
+I have a keybind solution that was originally included in my settings screen.  I removed it because it comes with so many headaches keeping it in sync with changes to the `Project` > `Project Settings` > `Input Map` configuration.
+
 ## Attribution And License
 
 Models:
