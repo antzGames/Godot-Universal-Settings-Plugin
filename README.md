@@ -73,7 +73,7 @@ The `Master` bus is mandatory, but if you do not have the remaining audio buses 
 
 Here is a table of the supported settings based on the renderer:
 
-![supported](https://github.com/user-attachments/assets/50653a74-9f73-414d-a7ae-6e32fec8f5f2)
+![supported](https://github.com/user-attachments/assets/437f44d6-982c-4b90-bb0c-b26beafbae6e)
 
 Mobile renderer `Window Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
 
