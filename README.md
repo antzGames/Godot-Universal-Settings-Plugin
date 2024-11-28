@@ -8,6 +8,8 @@ and audio settings, ensuring a consistent experience across platforms.
 
 <img src="https://github.com/user-attachments/assets/a02846a3-ca69-4ba5-aab0-3f7849631837" width="640">
 
+Note: This is a BETA version. It should be tested thoroughly to assess its suitability for your needs.
+
 ## Table of Contents
 
 - [Features](#features)
