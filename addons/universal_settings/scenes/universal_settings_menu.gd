@@ -1,9 +1,10 @@
 extends ColorRect
 
+# this is the tab container
 @onready var tab_container: TabContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
-@onready var quit_button = $CenterContainer/MarginContainer/VBoxContainer/SaveButton
+@onready var save_button = $CenterContainer/MarginContainer/VBoxContainer/SaveButton
 
 # Options dropdowns
 @onready var screen_option_button: OptionButton = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MonitorContainer/MonitorButton"
@@ -12,12 +13,13 @@ extends ColorRect
 @onready var msaa_option = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MSAAContainer/MSAAOptionButton"
 @onready var fsr_option = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer/FSROptionButton"
 
-# check boxes
+# Check boxes
 @onready var fxaa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox"
 @onready var taa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox"
 @onready var vysnc_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox"
 @onready var scale_3d_slider = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer/3DScaleSlider"
 
+# 3D Scale slider label
 @onready var scale_3d_label = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer/Scale3DLabel"
 
 # Audio
@@ -32,7 +34,7 @@ var resolution_mode_selected
 var msaa_mode_selected
 var fsr_mode_selected
 
-var renderer: int # 0 = Compatibility, 1 = Forward Mobile, 2 = Forward+
+var renderer: int # 0 = Compatibility, 1 = Mobile, 2 = Forward+
 var last_monitor_count := DisplayServer.get_screen_count() # monitor count
 
 # saving/loading resource
@@ -41,9 +43,10 @@ var save_settings_path = "user://game_data/"
 var save_file_name = str("settings_data", ProjectSettings.get_setting("application/config/version"), ".tres")
 
 # dictionaries for options dropdowns
-# window modes dictionary - Exclusive FullScreen has to be the first element and must exist
+
+# window mode dictionary - Exclusive FullScreen has to be the first element and must exist
 @export var window_modes : Dictionary = {
-	"Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN, # this has to be first and alwys exist
+	"Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN, # this has to be first and must exist
 	"Window" : DisplayServer.WINDOW_MODE_WINDOWED}
 
 # You can modify these window resolutions to your liking, 
@@ -71,8 +74,6 @@ func _init() -> void:
 
 func _ready():
 	load_settings_from_storage()
-
-	#tab_container.get_tab_bar().focus_mode = Control.FOCUS_NONE
 	
 	var rendering_method := str(ProjectSettings.get_setting_with_override("rendering/renderer/rendering_method"))
 	match rendering_method:
@@ -102,7 +103,7 @@ func _ready():
 				screen_option_button.disabled = true
 				
 	visible = false
-	quit_button.pressed.connect(quit_menu)
+	save_button.pressed.connect(quit_menu)
 	scale_3d_slider.value_changed.connect(_on_scale_3D_value_changed)
 
 	if OS.get_name() != "Web":
@@ -118,7 +119,7 @@ func _ready():
 	
 func _exit_tree():
 	# Clean-up of the plugin goes here.
-	pass	
+	pass
 	
 func initialize_controls():
 	if OS.get_name() != "Web":
@@ -209,8 +210,6 @@ func load_settings():
 			else:
 				vysnc_checkbox.button_pressed = false
 			_on_v_sync_check_box_toggled(vysnc_checkbox.button_pressed)
-	
-
 		
 func set_fsr(mode: int, index: int):
 	match mode:
@@ -225,7 +224,6 @@ func set_fsr(mode: int, index: int):
 	
 	settings_data.fsr_mode = mode
 	settings_data.fsr_mode_index = index
-
 
 func set_msaa(mode: int, index: int):
 	match mode:
@@ -332,7 +330,6 @@ func _on_v_sync_check_box_toggled(toggled_on):
 	else:
 		settings_data.vsync = DisplayServer.VSYNC_DISABLED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-
 	
 func _on_scale_3D_value_changed(v : int):
 	var value : float
@@ -367,7 +364,7 @@ func _on_scale_3D_value_changed(v : int):
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	# the following with grab the focus of the SAVE button if a controller is connected
 	if Input.get_connected_joypads() and Input.get_connected_joypads().size() > 0:
-		quit_button.call_deferred("grab_focus")
+		save_button.call_deferred("grab_focus")
 
 func _input(event: InputEvent):
 	if !visible: return
