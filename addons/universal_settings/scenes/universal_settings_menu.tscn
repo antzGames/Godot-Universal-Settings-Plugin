@@ -337,6 +337,7 @@ size_flags_vertical = 3
 tooltip_text = "* Fast Approximate Anti-Aliasing
 
 Computationally cheap but blurry anti-aliasing"
+focus_mode = 0
 action_mode = 0
 text = "FXAA:"
 alignment = 2
@@ -352,6 +353,7 @@ Uses multiple frames to
 smooth out jaggies,
 flickering, and shimmering
 without blurring"
+focus_mode = 0
 action_mode = 0
 text = "TAA:"
 alignment = 2
@@ -367,6 +369,7 @@ ON: GPU will sync frame rate
         to monitor's frame rate.
 OFF: GPU will try to render as
          many frames per second"
+focus_mode = 0
 action_mode = 0
 text = "VSync:"
 alignment = 2
