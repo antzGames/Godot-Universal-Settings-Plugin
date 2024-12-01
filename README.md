@@ -80,6 +80,8 @@ Here is a table of the supported settings based on the renderer:
 
 Mobile renderer's `Monitor Selection`, `Window/Fullscreen Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
 
+Also, some developers use Compatibility mode to export to Android and iOS, and technically I should also disable `Monitor Selection`, `Window/Fullscreen Mode`, `Window Resolution` and `VSync` settings on Compatibility mode as well.  This is on my TODO list.
+
 ## Why Use This Plugin
 
 **Seamless Exporting**:
@@ -216,7 +218,7 @@ The source code of this file is well documented, so if you need to change the de
 
 ### Dropdowns
 
-The only way to modify the drops down is by updating the dictionaries in the plugin's main script:
+The only way to modify the dropdowns is by updating the dictionaries in the plugin's main script:
 
 `iniversal_settings_menu.gd`
 
