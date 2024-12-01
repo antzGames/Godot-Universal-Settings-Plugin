@@ -46,7 +46,7 @@ var save_file_name = str("settings_data", ProjectSettings.get_setting("applicati
 
 # You can modify these window resolutions to your liking, 
 # but there must to be at least ONE entry.
-# Make sure you default resolution is set in the seetings_data_resource.gd file
+# Make sure your default resolution is set in the seetings_data_resource.gd file
 @export var resolutions : Dictionary = {"1280x720"  :  Vector2i(1280, 720),  # index 0
 										"1440x810"  :  Vector2i(1440, 810),  # index 1
 										"1600x900"  :  Vector2i(1600, 900),  # index 2

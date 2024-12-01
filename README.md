@@ -225,11 +225,12 @@ You most likely want to modify the resolutions dictioary:
 ```gdscript
 # You can modify these window resolutions to your liking, 
 # but there must to be at least ONE entry.
-# Make sure you default resolution is set in the seetings_data_resource.gd file
-@export var resolutions : Dictionary = {"1280x720"  :  Vector2i(1280, 720),  # index 0
-										"1440x810"  :  Vector2i(1440, 810),  # index 1
-										"1600x900"  :  Vector2i(1600, 900),  # index 2
-										"1920x1080" :  Vector2i(1920, 1080)} # index 3
+# Make sure your default resolution is set in the seetings_data_resource.gd file
+@export var resolutions : Dictionary = {
+  "1280x720"  :  Vector2i(1280, 720),  # index 0
+  "1440x810"  :  Vector2i(1440, 810),  # index 1
+  "1600x900"  :  Vector2i(1600, 900),  # index 2
+  "1920x1080" :  Vector2i(1920, 1080)} # index 3
 ```
 
 ## How to Delete My Saved Settings
