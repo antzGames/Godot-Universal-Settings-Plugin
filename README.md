@@ -210,7 +210,7 @@ This file has 2 purposes:
 
 When a save file does not exist or cannot be found, then the plugin will look at this file for the default settings.
 
-The source code is well documented, so if you need to change the default settings on the first time a user plays your game this is the file you need to modify.
+The source code of this file is well documented, so if you need to change the default settings on the first time a user plays your game this is the file you need to modify.
 
 **Keep in mind that the default settings in this file will supersede any project settings.**
 
@@ -220,18 +220,20 @@ The only way to modify the drops down is by updating the dictionaries in the plu
 
 `iniversal_settings_menu.gd`
 
-You most likely want to modify the resolutions dictioary:
+You most likely want to modify the window resolutions dictionary:
 
 ```gdscript
 # You can modify these window resolutions to your liking, 
 # but there must to be at least ONE entry.
-# Make sure your default resolution is set in the seetings_data_resource.gd file
+# Make sure your default resolution is set in the settings_data_resource.gd file
 @export var resolutions : Dictionary = {
   "1280x720"  :  Vector2i(1280, 720),  # index 0
   "1440x810"  :  Vector2i(1440, 810),  # index 1
   "1600x900"  :  Vector2i(1600, 900),  # index 2
   "1920x1080" :  Vector2i(1920, 1080)} # index 3
 ```
+
+Feel free to modify the resolutions, but make sure you set the correct index for the default in the `settings_data_resource.gd` file.
 
 ## How to Delete My Saved Settings
 
