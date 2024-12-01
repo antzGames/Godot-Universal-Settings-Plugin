@@ -364,7 +364,6 @@ func _on_scale_3D_value_changed(v : int):
 	scale_3d_slider.value = v
 	get_viewport().scaling_3d_scale = value
 
-
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	# the following with grab the focus of the SAVE button if a controller is connected
 	if Input.get_connected_joypads() and Input.get_connected_joypads().size() > 0:
