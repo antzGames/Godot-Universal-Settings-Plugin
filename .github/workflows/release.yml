@@ -1,0 +1,28 @@
+name: Create Release ZIP
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  create-zip:
+    name: Create and Upload ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+    # Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Create the ZIP file
+    - name: Godot Universal Plugin ZIP
+      run: zip -r "${{ github.event.repository.name }}.zip" ./*
+
+    # Upload the ZIP file as a release asset
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v2
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: ${{ github.event.repository.name }}.zip
+        asset_name: ${{ github.event.repository.name }}.zip
+        asset_content_type: application/zip
