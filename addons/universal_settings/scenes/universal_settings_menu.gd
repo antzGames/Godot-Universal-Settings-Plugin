@@ -81,12 +81,12 @@ var remapping_button = null
 # Keybinds dictionary
 # 
 # You must map the all the project setting's input map 
-# that you want to allow to be remaped here.
+# that you want to allow to be remaped in this dictionary.
 # You can save up to 10 keybings without modifying the plugin.
-# 1st term is the action input map name.
+# 1st term is the action name in your project setting's input map.
 # 2nd term is the name of the action that you want displayed on the settings screen.
-# You can only map one keyboard key or mouse button per action.
-# you have to set the default KEYCODE in the settings_data_resource.gd file
+# You can only map one keyboard key or one mouse button per action.
+# At the moment I do not check for duplicate keybinds.
 # 
 var input_actions : Dictionary = {
 	"universal_forward" : "Move Forward", 	# index 0
@@ -187,6 +187,10 @@ func create_action_list(set_defaults: bool):
 		index += 1
 	
 func add_key_bind(index: int, action, set_defaults):
+	if !InputMap.action_get_events(action):
+		printerr("UniversalSettings Error: Action '", action, "' not found in project config.")
+		return
+
 	var key_bind = InputEventKey.new()
 	var mouse_bind = InputEventMouseButton.new()
 	var is_mouse = false
@@ -312,7 +316,6 @@ func add_key_bind(index: int, action, set_defaults):
 				mouse_bind.button_index = settings_data.universal_keybind_9_keycode
 			elif settings_data.universal_keybind_9_keycode > 7:
 				key_bind.keycode = settings_data.universal_keybind_9_keycode
-				
 		_:
 			key_bind.keycode = -1
 	
@@ -364,7 +367,6 @@ func _input(event: InputEvent):
 				if i == action_to_remap:
 					break
 				index += 1
-			print("index: ", index)
 			
 			match index:
 				0: # "move_forward":

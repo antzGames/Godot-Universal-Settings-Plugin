@@ -48,9 +48,9 @@ class_name SettingsDataResource
 @export var vsync : DisplayServer.VSyncMode = DisplayServer.VSYNC_ENABLED
 
 # Key Binds
-# Set the default keycodes for each keybind item
-# Needs to map to the index of the keybinds dictionary in the plugin
-# See gitHub repo for more information on keybinds
+#
+# the keycode / mouse button index are saved as an integer in this save file
+# supports up to 10 keybinds
 @export var universal_keybind_0_keycode : int
 @export var universal_keybind_1_keycode : int
 @export var universal_keybind_2_keycode : int
@@ -62,6 +62,3 @@ class_name SettingsDataResource
 @export var universal_keybind_7_keycode : int
 @export var universal_keybind_8_keycode : int
 @export var universal_keybind_9_keycode : int
-
-# See >>> https://docs.godotengine.org/en/stable/classes/class_%40globalscope.html#enum-globalscope-key
-# for list of keycodes
