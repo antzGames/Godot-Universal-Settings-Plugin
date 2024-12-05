@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6sy572h06xqn"]
+[gd_scene load_steps=8 format=3 uid="uid://b6sy572h06xqn"]
 
 [ext_resource type="Script" path="res://addons/universal_settings/scenes/universal_settings_menu.gd" id="1_c2d6w"]
-[ext_resource type="PackedScene" uid="uid://bbed87snykmws" path="res://addons/universal_settings/scenes/volume_slider.tscn" id="3_eeyia"]
+[ext_resource type="PackedScene" uid="uid://c2realw2o3f2x" path="res://addons/universal_settings/scenes/ui/input_button.tscn" id="3_2wmvu"]
+[ext_resource type="PackedScene" uid="uid://bbed87snykmws" path="res://addons/universal_settings/scenes/ui/volume_slider.tscn" id="3_eeyia"]
 
 [sub_resource type="Animation" id="Animation_mjsge"]
 resource_name = "HideSettings"
@@ -409,6 +410,39 @@ bus_name = "SFX"
 [node name="VoiceSlider" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer" instance=ExtResource("3_eeyia")]
 layout_mode = 2
 
+[node name="Keybinds" type="TabBar" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer"]
+layout_mode = 2
+
+[node name="ActionList" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InputButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("3_2wmvu")]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Reset Keybinds to Default"
+
 [node name="SaveButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 focus_mode = 0
@@ -428,4 +462,5 @@ libraries = {
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox" to="." method="_on_fxaa_check_box_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox" to="." method="_on_taa_check_box_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

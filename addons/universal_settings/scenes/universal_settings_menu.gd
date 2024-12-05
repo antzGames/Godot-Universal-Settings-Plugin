@@ -69,6 +69,31 @@ var fsr_modes : Dictionary =  { "Bilinear": Viewport.SCALING_3D_MODE_BILINEAR, 	
 								"FSR 1.0": Viewport.SCALING_3D_MODE_FSR,		# index/value = 1
 								"FSR 2.2": Viewport.SCALING_3D_MODE_FSR2}		# index/value = 2
 
+# Keybinds
+@onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/input_button.tscn")
+@onready var action_list: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer/ActionList
+var is_remapping = false
+var action_to_remap = null
+var remapping_button = null
+
+# Keybinds dictionary
+# 
+# You must map the all the project setting's input map 
+# that you want to allow to be remaped here.
+# You can save up to 10 keybings without modifying the plugin.
+# 1st term is the action input map name.
+# 2nd term is the name of the action that you want displayed on the settings screen.
+# You can only map one keyboard key or mouse button per action.
+# you have to set the default KEYCODE in the settings_data_resource.gd file
+# 
+var input_actions : Dictionary = {
+	"universal_forward" : "Move Forward", 	# index 0
+	"universal_back" 	: "Move Backward",	# index 1
+	"universal_left" 	: "Turn Left",		# index 2
+	"universal_right" 	: "Turn Right",		# index 3
+	"universal_jump" 	: "Jump",			# index 4
+	"universal_fire" 	: "Fire"}			# index 5
+
 func _init() -> void:
 	pass
 
@@ -116,6 +141,196 @@ func _ready():
 
 	load_settings()
 	initialize_controls()
+	create_action_list(false)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+func create_action_list(set_defaults: bool):
+	for item in action_list.get_children():
+		item.queue_free()
+		
+	var index: int = 0
+	for action in input_actions:
+		var button = input_button_scene.instantiate()
+		var action_label = button.find_child("LabelAction")
+		var input_label = button.find_child("LabelInput")
+		
+		action_label.text = input_actions[action]
+		
+		add_key_bind(index, action, set_defaults)
+		
+		var events = InputMap.action_get_events(action)
+		if events.size() > 0:
+			input_label.text = events[0].as_text().trim_suffix(" (Physical)").to_upper()
+		else:
+			input_label.text = ""
+			
+		action_list.add_child(button)
+		button.pressed.connect(_on_input_button_pressed.bind(button, action))
+		index += 1
+	
+func add_key_bind(index: int, action, set_defaults):
+	var key_bind = InputEventKey.new()
+	var mouse_bind = InputEventMouseButton.new()
+	var is_mouse = false
+	
+	match index:
+		0: # "universal_forward":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_0_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_0_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_0_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_0_keycode
+			elif settings_data.universal_keybind_0_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_0_keycode
+		1: # "universal_back":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_1_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_1_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_1_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_1_keycode
+			elif settings_data.universal_keybind_1_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_1_keycode
+		2: # "universal_left":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_2_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_2_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_2_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_2_keycode
+			elif settings_data.universal_keybind_2_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_2_keycode
+		3: # "universal_right":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_3_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_3_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_3_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_3_keycode
+			elif settings_data.universal_keybind_3_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_3_keycode
+		4: # "universal_jump":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_4_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_4_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_4_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_4_keycode
+			elif settings_data.universal_keybind_4_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_4_keycode
+		5: # "universal_fire":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_5_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_5_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_5_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_5_keycode
+			elif settings_data.universal_keybind_5_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_5_keycode
+		_:
+			key_bind.keycode = -1
+	
+	if !set_defaults:
+		InputMap.erase_action(action)
+		InputMap.add_action(action)
+		if is_mouse:
+			InputMap.action_add_event(action, mouse_bind)
+		else:
+			InputMap.action_add_event(action, key_bind)
+
+func _on_reset_button_pressed():
+	InputMap.load_from_project_settings()
+	create_action_list(true)
+	
+func _on_input_button_pressed(button, action):
+	if !is_remapping:
+		is_remapping = true
+		action_to_remap = action
+		remapping_button = button
+		button.find_child("LabelInput").text = "Press key to bind..."
+	
+func _update_action_list(button, event):
+	button.find_child("LabelInput").text = event.as_text().trim_suffix(" (Physical)").to_upper()
+	
+func _input(event: InputEvent):
+	if !visible: return
+
+	if is_remapping:
+		if (event is InputEventKey || 
+		(event is InputEventMouseButton && event.pressed)):
+			
+			# remove double clicks
+			if event is InputEventMouseButton && event.double_click:
+				event.double_click = false
+			
+			InputMap.action_erase_events(action_to_remap)
+			InputMap.action_add_event(action_to_remap, event)
+			_update_action_list(remapping_button, event)
+	
+			var key_code
+			if event is InputEventKey:
+				key_code = event.keycode
+			elif event is InputEventMouseButton:
+				key_code = event.button_index
+			
+			var index: int = 0
+			for i in input_actions:
+				if i == action_to_remap:
+					break
+				index += 1
+			print("index: ", index)
+			
+			match index:
+				0: # "move_forward":
+					settings_data.universal_keybind_0_keycode = key_code
+				1: # "move_back":
+					settings_data.universal_keybind_1_keycode = key_code
+				2: # "move_left":
+					settings_data.universal_keybind_2_keycode = key_code
+				3: # "move_right":
+					settings_data.universal_keybind_3_keycode = key_code
+				4: # "jump":
+					settings_data.universal_keybind_4_keycode = key_code
+				5: # "shoot":
+					settings_data.universal_keybind_5_keycode = key_code
+					
+			is_remapping = false
+			action_to_remap = null
+			remapping_button = null
+			
+			accept_event()	
+	
+	
+	
+	
+	
 	
 func _exit_tree():
 	# Clean-up of the plugin goes here.
@@ -366,10 +581,6 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	# the following with grab the focus of the SAVE button if a controller is connected
 	#if Input.get_connected_joypads() and Input.get_connected_joypads().size() > 0:
 		#save_button.call_deferred("grab_focus")
-
-func _input(event: InputEvent):
-	if !visible: return
-	# you can use this method to catch events specifically for the settings menu if visible
 
 func get_settings_init() -> SettingsDataResource:
 	return settings_data
