@@ -51,17 +51,17 @@ class_name SettingsDataResource
 # Set the default keycodes for each keybind item
 # Needs to map to the index of the keybinds dictionary in the plugin
 # See gitHub repo for more information on keybinds
-@export var universal_keybind_0_keycode : int = 87		# W
-@export var universal_keybind_1_keycode : int = 83		# S
-@export var universal_keybind_2_keycode : int = 65		# A
-@export var universal_keybind_3_keycode : int = 68		# D
-@export var universal_keybind_4_keycode : int = 32		# SPACE
-@export var universal_keybind_5_keycode : int = 1		# LEFT MOUSE BUTTON
+@export var universal_keybind_0_keycode : int
+@export var universal_keybind_1_keycode : int
+@export var universal_keybind_2_keycode : int
+@export var universal_keybind_3_keycode : int
+@export var universal_keybind_4_keycode : int
+@export var universal_keybind_5_keycode : int
 
-@export var universal_keybind_6_keycode : int = -1		# **** Available
-@export var universal_keybind_7_keycode : int = -1		# **** Available
-@export var universal_keybind_8_keycode : int = -1		# **** Available
-@export var universal_keybind_9_keycode : int = -1		# **** Available
+@export var universal_keybind_6_keycode : int
+@export var universal_keybind_7_keycode : int
+@export var universal_keybind_8_keycode : int
+@export var universal_keybind_9_keycode : int
 
 # See >>> https://docs.godotengine.org/en/stable/classes/class_%40globalscope.html#enum-globalscope-key
 # for list of keycodes

@@ -433,14 +433,14 @@ layout_mode = 2
 [node name="ActionList" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="InputButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer/ActionList" instance=ExtResource("3_2wmvu")]
 layout_mode = 2
 
-[node name="ResetButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer"]
-custom_minimum_size = Vector2(400, 0)
+[node name="ResetButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 4
 text = "Reset Keybinds to Default"
 
 [node name="SaveButton" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" groups=["Button"]]
@@ -462,5 +462,5 @@ libraries = {
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox" to="." method="_on_fxaa_check_box_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox" to="." method="_on_taa_check_box_toggled"]
 [connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

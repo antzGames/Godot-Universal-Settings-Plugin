@@ -17,7 +17,7 @@ func _ready():
 
 	# If no theme is set then the default Godot theme is used,
 	# but you can easily change themes... pick one!
-	UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Vector2(550,510), Color(1,1,1,0.5))
+	UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Vector2(550,520), Color(1,1,1,0.5))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_light/theme.tres", Vector2(550, 345), Color(0,0.471,0.831,0.5))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_dark/theme.tres", Vector2(550, 345), Color(1,1,1,0.5))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/kenney/kenneyUI.tres")

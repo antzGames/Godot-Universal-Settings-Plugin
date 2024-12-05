@@ -72,6 +72,8 @@ var fsr_modes : Dictionary =  { "Bilinear": Viewport.SCALING_3D_MODE_BILINEAR, 	
 # Keybinds
 @onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/input_button.tscn")
 @onready var action_list: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer/ActionList
+@onready var reset_button: Button = $CenterContainer/MarginContainer/VBoxContainer/ResetButton
+
 var is_remapping = false
 var action_to_remap = null
 var remapping_button = null
@@ -91,8 +93,12 @@ var input_actions : Dictionary = {
 	"universal_back" 	: "Move Backward",	# index 1
 	"universal_left" 	: "Turn Left",		# index 2
 	"universal_right" 	: "Turn Right",		# index 3
-	"universal_jump" 	: "Jump",			# index 4
-	"universal_fire" 	: "Fire"}			# index 5
+	"universal_run" 	: "Run",			# index 4
+	"universal_jump" 	: "Jump",			# index 5
+	"universal_fire" 	: "Fire",			# index 6
+	"universal_interact": "Interact",		# index 7
+	"universal_reset" 	: "Reset",			# index 8
+	"universal_exit" 	: "Exit"}			# index 9
 
 func _init() -> void:
 	pass
@@ -141,7 +147,11 @@ func _ready():
 
 	load_settings()
 	initialize_controls()
-	create_action_list(false)
+	
+	if settings_data == null || settings_data.universal_keybind_0_keycode == 0: # if first time running game
+		create_action_list(true)
+	else:
+		create_action_list(false)
 	
 	
 	
@@ -230,7 +240,7 @@ func add_key_bind(index: int, action, set_defaults):
 				mouse_bind.button_index = settings_data.universal_keybind_3_keycode
 			elif settings_data.universal_keybind_3_keycode > 7:
 				key_bind.keycode = settings_data.universal_keybind_3_keycode
-		4: # "universal_jump":
+		4: # "universal_run":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
@@ -242,7 +252,7 @@ func add_key_bind(index: int, action, set_defaults):
 				mouse_bind.button_index = settings_data.universal_keybind_4_keycode
 			elif settings_data.universal_keybind_4_keycode > 7:
 				key_bind.keycode = settings_data.universal_keybind_4_keycode
-		5: # "universal_fire":
+		5: # "universal_jump":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
@@ -254,6 +264,55 @@ func add_key_bind(index: int, action, set_defaults):
 				mouse_bind.button_index = settings_data.universal_keybind_5_keycode
 			elif settings_data.universal_keybind_5_keycode > 7:
 				key_bind.keycode = settings_data.universal_keybind_5_keycode
+		6: # "universal_fire":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_6_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_6_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_6_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_6_keycode
+			elif settings_data.universal_keybind_6_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_6_keycode
+		7: # "universal_interact":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_7_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_7_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_7_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_7_keycode
+			elif settings_data.universal_keybind_7_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_7_keycode
+		8: # "universal_reset":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_8_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_8_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_8_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_8_keycode
+			elif settings_data.universal_keybind_8_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_8_keycode
+		9: # "universal_exit":
+			if set_defaults:
+				var event : InputEvent = InputMap.action_get_events(action)[0]
+				if (event is InputEventKey):
+					settings_data.universal_keybind_9_keycode = int(event.physical_keycode)
+				else:
+					settings_data.universal_keybind_9_keycode = int(event.button_index)
+			elif settings_data.universal_keybind_9_keycode in range(6):
+				is_mouse = true
+				mouse_bind.button_index = settings_data.universal_keybind_9_keycode
+			elif settings_data.universal_keybind_9_keycode > 7:
+				key_bind.keycode = settings_data.universal_keybind_9_keycode
+				
 		_:
 			key_bind.keycode = -1
 	
@@ -316,16 +375,23 @@ func _input(event: InputEvent):
 					settings_data.universal_keybind_2_keycode = key_code
 				3: # "move_right":
 					settings_data.universal_keybind_3_keycode = key_code
-				4: # "jump":
+				4: # "run":
 					settings_data.universal_keybind_4_keycode = key_code
-				5: # "shoot":
+				5: # "jump":
 					settings_data.universal_keybind_5_keycode = key_code
-					
+				6: # "fire":
+					settings_data.universal_keybind_6_keycode = key_code
+				7: # "interact":
+					settings_data.universal_keybind_7_keycode = key_code
+				8: # "reset":
+					settings_data.universal_keybind_8_keycode = key_code
+				9: # "exit":
+					settings_data.universal_keybind_9_keycode = key_code
 			is_remapping = false
 			action_to_remap = null
 			remapping_button = null
 			
-			accept_event()	
+			accept_event()
 	
 	
 	
@@ -348,6 +414,11 @@ func initialize_controls():
 	
 func _process(_delta: float) -> void:
 	if !visible: return
+	
+	if tab_container.current_tab == 2:
+		reset_button.visible = true
+	else:
+		reset_button.visible = false
 	
 	if OS.get_name() != "Web":
 		if DisplayServer.get_screen_count() != last_monitor_count:
