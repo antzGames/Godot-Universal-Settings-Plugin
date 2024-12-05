@@ -3,8 +3,7 @@
 A versatile, renderer-aware settings screen for Godot 4.3 that seamlessly adapts across all renderers 
 and HTML web builds.
 
-This plugin simplifies user settings management by saving and reloading configurations for graphics 
-and audio settings, ensuring a consistent experience across platforms.
+This plugin simplifies user settings management by saving and reloading configurations for graphics, audio settings, and keybinds, ensuring a consistent experience across platforms.
 
 <img src="https://github.com/user-attachments/assets/a02846a3-ca69-4ba5-aab0-3f7849631837" width="640">
 
@@ -24,6 +23,7 @@ Note: This is a BETA version. It should be tested thoroughly to assess its suita
 - [How to Apply a Theme](#how-to-apply-a-theme)
 - [Audio Bus Configuration](#audio-bus-configuration)
 - [Configuring Default Settings and Dropdowns](#configuring-default-settings-and-dropdowns)
+- [Keybinds] (#keybinds)
 - [How to Delete My Saved Settings](#how-to-delete-my-saved-settings)
 - [Demos Included](#demos-included)
 - [Sponza Demo](#sponza-demo)
@@ -33,7 +33,7 @@ Note: This is a BETA version. It should be tested thoroughly to assess its suita
 
 ## Features
 
-**Persistent Settings**: Saves user graphics and audio preferences, reloading them on game startup.
+**Persistent Settings**: Saves user graphics, audio preferences, and keybinds, reloading them on game startup.
 
 **One-Line Integration**: A single function call to display the settings screen.
 
@@ -237,6 +237,22 @@ You most likely want to modify the window resolutions dictionary:
 
 Feel free to modify the resolutions, but make sure you set the correct index for the default in the `settings_data_resource.gd` file.
 
+### Keybinds
+
+Keybinds allow you to set and persist new keyboard and mouse buttons assignments for each of the custom actions set in your `Project` > `Project Settings` > `Input Map` configuration.
+
+Here are the limitations:
+- Up to 10 actions can be displayed in the keybind tab.
+- Only one event per action is stored.
+- Only keyboard and mouse button events supported.
+- No controller/gamepad support.
+
+Using keybinds requires you to configure the actions in the plugin.  You must match your  `Project` > `Project Settings` > `Input Map` configuration with the plugin as show below:
+
+
+
+See this video for a demonstration and more information: https://youtu.be/Di7lJP5SvnI
+
 ## How to Delete My Saved Settings
 
 If you want to delete your saved settings on desktop:
@@ -299,6 +315,9 @@ Youtube video showing the an overview of the alpha release:
 
 https://youtu.be/li1fdAOqewk
 
+Youtube vide showing the keybind features and limitations:
+
+https://youtu.be/Di7lJP5SvnI
 
 ## More Settings Planned?
 
@@ -317,10 +336,6 @@ There are some quality settings that are supported across all renderers that cou
 - Shadow resolution (unfortunately if you change the shadow resolution you need to tweak `shadow_bias`)
 - Shadow Filtering (direction and positional)
 - Model quality (`mesh_lod_threshold`)
-
-### Keybinds
-
-I have a keybind solution that was originally included in my settings screen.  I removed it because it comes with so many headaches keeping it in sync with changes to the `Project` > `Project Settings` > `Input Map` configuration.
 
 ## Attribution And License
 

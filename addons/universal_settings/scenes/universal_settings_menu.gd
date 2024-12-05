@@ -558,6 +558,7 @@ func quit_menu():
 
 func show_screen():
 	if visible: return
+	tab_container.current_tab = 0
 	animation_player.play("ShowSettings")
 	
 func _on_monitor_button_item_selected(index: int) -> void:

@@ -20,7 +20,7 @@ func _ready():
 	# but you can easily change themes... pick one!
 	UniversalSettings.set_theme_to("res://demo/assets/themes/clashy/clashy.tres", Vector2(550,520), Color(1,1,1,0.5))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_light/theme.tres", Vector2(550, 345), Color(0,0.471,0.831,0.5))
-	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_dark/theme.tres", Vector2(550, 345), Color(1,1,1,0.5))
+	#UniversalSettings.set_theme_to("res://demo/assets/themes/windows_10_dark/theme.tres", Vector2(550, 345), Color(1,1,1,1.0))
 	#UniversalSettings.set_theme_to("res://demo/assets/themes/kenney/kenneyUI.tres")
 	
 	UniversalSettings.show_screen()
@@ -35,7 +35,7 @@ func _input(event: InputEvent):
 				break
 			
 	# exit demo and show settings screen
-	if event.is_action("ui_cancel"):
+	if event.is_action("ui_cancel") and OS.get_name() != "Web":
 		get_tree().quit()
 	elif event.is_action_released("ui_accept"): 
 		UniversalSettings.show_screen()  # will do nothing if already visible
