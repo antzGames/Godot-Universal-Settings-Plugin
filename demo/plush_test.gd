@@ -8,8 +8,9 @@ var cameraLookAt: Vector3 = Vector3(0,5,0)
 @export var max_box_count: int = 100
 var current_box_count: int
 
-@onready var camera_3d = $Pivot/Camera3D
+@onready var camera_3d: Camera3D = $Pivot/Camera3D
 @onready var godot_plush = $godot_plushV2
+@onready var input_info: Label = $HBoxContainer/InputInfo
 
 const ANTZ_BOX = preload("assets/models/antz_box.tscn")
 
@@ -26,6 +27,14 @@ func _ready():
 	camera_3d.position = Vector3(0, 15, 15)
 
 func _input(event: InputEvent):
+	# this code will only work for this project's actions
+	for a in InputMap.get_actions():
+		if a.to_lower().begins_with("universal_"):  # using this projects actions
+			if event.is_action(a.to_lower()):
+				input_info.text = str("Last action detected: '",a, "' with ", event.as_text().to_upper())
+				break
+			
+	# exit demo and show settings screen
 	if event.is_action("ui_cancel"):
 		get_tree().quit()
 	elif event.is_action_released("ui_accept"): 
