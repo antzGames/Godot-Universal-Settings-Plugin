@@ -23,7 +23,7 @@ Note: This is a BETA version. It should be tested thoroughly to assess its suita
 - [How to Apply a Theme](#how-to-apply-a-theme)
 - [Audio Bus Configuration](#audio-bus-configuration)
 - [Configuring Default Settings and Dropdowns](#configuring-default-settings-and-dropdowns)
-- [Keybinds] (#keybinds)
+- [Keybinds](#keybinds)
 - [How to Delete My Saved Settings](#how-to-delete-my-saved-settings)
 - [Demos Included](#demos-included)
 - [Sponza Demo](#sponza-demo)
