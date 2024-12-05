@@ -249,7 +249,7 @@ Here are the limitations:
 
 Using keybinds requires you to configure the actions in the plugin.  You must match your  `Project` > `Project Settings` > `Input Map` configuration with the plugin as show below:
 
-
+<img src="https://github.com/user-attachments/assets/5815d0eb-8009-4570-9b6d-1366a596b030" width="640">
 
 See this video for a demonstration and more information: https://youtu.be/Di7lJP5SvnI
 
