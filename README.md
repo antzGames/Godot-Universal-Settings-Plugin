@@ -311,11 +311,11 @@ This projects makes it easier to notice how the MSAA, FSR 1.0, FSR 2.2, TAA, FXA
 
 ## Video Tutorial
 
-Youtube video showing the an overview of the alpha release:
+YouTube video showing the an overview of the alpha release:
 
 https://youtu.be/li1fdAOqewk
 
-Youtube vide showing the keybind features and limitations:
+YouTube video showing the keybind features and limitations:
 
 https://youtu.be/Di7lJP5SvnI
 
