@@ -5,7 +5,7 @@ and HTML web builds.
 
 This plugin simplifies user settings management by saving and reloading configurations for graphics, audio settings, and keybinds, ensuring a consistent experience across platforms.
 
-<img src="https://github.com/user-attachments/assets/a02846a3-ca69-4ba5-aab0-3f7849631837" width="640">
+<img src="https://github.com/user-attachments/assets/e6a93658-f99d-4f48-8c93-b955ec0ce274" width="640">
 
 Note: This is a BETA version. It should be tested thoroughly to assess its suitability for your needs.
 
@@ -297,7 +297,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("ui_accept"): UniversalSettings.show_screen()
 ```	
-<img src="https://github.com/user-attachments/assets/d627ebd9-22bc-49f6-9690-4fb7f303db77" width="626">
+<img src="https://github.com/user-attachments/assets/114033a0-5471-4452-895b-de59fb46fe12" width="572">
 
 ## Sponza Demo
 
