@@ -3,8 +3,10 @@ extends HBoxContainer
 @onready var scale_3d_slider: HSlider = $"3DScaleSlider"
 @onready var scale_3d_label: Label = $Scale3DLabel
 
+@onready var universal_settings_menu: ColorRect = $"../../../../../../.."
+
 func _ready() -> void:
-	UniversalSettings.on_load_settings.connect(_on_load_settings)
+	universal_settings_menu.on_load_settings.connect(_on_load_settings)
 	scale_3d_slider.value_changed.connect(_on_scale_3D_value_changed)
 
 	var renderer: int = 0
@@ -24,7 +26,7 @@ func _ready() -> void:
 		get_tree().get_root().get_viewport().scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR
 
 func _on_load_settings():
-	_on_scale_3D_value_changed(UniversalSettings.settings_data.scale_3d)
+	_on_scale_3D_value_changed(universal_settings_menu.settings_data.scale_3d)
 
 func _on_scale_3D_value_changed(v : int):
 	#print(name, " ", v)
@@ -32,27 +34,27 @@ func _on_scale_3D_value_changed(v : int):
 	var value : float
 	if v == 4:
 		scale_3d_label.text = str("100%")
-		UniversalSettings.settings_data.scale_3d = 4
+		universal_settings_menu.settings_data.scale_3d = 4
 		value = 1.0
 	elif v == 3:
 		scale_3d_label.text = str("77%")
-		UniversalSettings.settings_data.scale_3d = 3
+		universal_settings_menu.settings_data.scale_3d = 3
 		value = 0.77
 	elif v == 2:
 		scale_3d_label.text = str("67%")
-		UniversalSettings.settings_data.scale_3d = 2
+		universal_settings_menu.settings_data.scale_3d = 2
 		value = 0.67
 	elif v == 1:
 		scale_3d_label.text = str("59%")
-		UniversalSettings.settings_data.scale_3d = 1
+		universal_settings_menu.settings_data.scale_3d = 1
 		value = 0.59
 	elif v == 0:
 		scale_3d_label.text = str("50%")
-		UniversalSettings.settings_data.scale_3d = 0
+		universal_settings_menu.settings_data.scale_3d = 0
 		value = 0.5
 	else:
 		scale_3d_label.text = str("100%")
-		UniversalSettings.settings_data.scale_3d = 4
+		universal_settings_menu.settings_data.scale_3d = 4
 		value = 1.0
 
 	scale_3d_slider.value = v

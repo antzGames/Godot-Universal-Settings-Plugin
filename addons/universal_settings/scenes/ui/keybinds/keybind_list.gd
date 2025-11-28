@@ -3,6 +3,7 @@ extends VBoxContainer
 
 @onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/components/input_button.tscn")
 @onready var keybinds_config = preload("uid://cxprmvpa272kd").instantiate()
+@onready var universal_settings_menu: ColorRect = $"../../../../../../../.."
 
 var is_remapping = false
 var action_to_remap = null
@@ -39,7 +40,7 @@ func create_action_list(set_defaults: bool):
 	
 func add_key_bind(index: int, action, set_defaults):
 	if !InputMap.action_get_events(action):
-		printerr("UniversalSettings Error: Action '", action, "' not found in project config.")
+		printerr("universal_settings_menu Error: Action '", action, "' not found in project config.")
 		return
 
 	var key_bind = InputEventKey.new()
@@ -51,122 +52,122 @@ func add_key_bind(index: int, action, set_defaults):
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_0_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_0_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_0_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_0_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_0_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_0_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_0_keycode
-			elif UniversalSettings.settings_data.universal_keybind_0_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_0_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_0_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_0_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_0_keycode
 		1: # "universal_back":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_1_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_1_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_1_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_1_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_1_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_1_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_1_keycode
-			elif UniversalSettings.settings_data.universal_keybind_1_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_1_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_1_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_1_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_1_keycode
 		2: # "universal_left":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_2_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_2_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_2_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_2_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_2_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_2_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_2_keycode
-			elif UniversalSettings.settings_data.universal_keybind_2_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_2_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_2_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_2_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_2_keycode
 		3: # "universal_right":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_3_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_3_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_3_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_3_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_3_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_3_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_3_keycode
-			elif UniversalSettings.settings_data.universal_keybind_3_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_3_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_3_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_3_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_3_keycode
 		4: # "universal_run":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_4_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_4_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_4_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_4_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_4_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_4_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_4_keycode
-			elif UniversalSettings.settings_data.universal_keybind_4_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_4_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_4_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_4_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_4_keycode
 		5: # "universal_jump":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_5_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_5_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_5_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_5_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_5_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_5_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_5_keycode
-			elif UniversalSettings.settings_data.universal_keybind_5_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_5_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_5_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_5_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_5_keycode
 		6: # "universal_fire":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_6_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_6_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_6_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_6_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_6_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_6_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_6_keycode
-			elif UniversalSettings.settings_data.universal_keybind_6_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_6_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_6_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_6_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_6_keycode
 		7: # "universal_interact":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_7_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_7_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_7_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_7_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_7_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_7_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_7_keycode
-			elif UniversalSettings.settings_data.universal_keybind_7_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_7_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_7_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_7_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_7_keycode
 		8: # "universal_reset":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_8_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_8_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_8_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_8_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_8_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_8_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_8_keycode
-			elif UniversalSettings.settings_data.universal_keybind_8_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_8_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_8_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_8_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_8_keycode
 		9: # "universal_exit":
 			if set_defaults:
 				var event : InputEvent = InputMap.action_get_events(action)[0]
 				if (event is InputEventKey):
-					UniversalSettings.settings_data.universal_keybind_9_keycode = int(event.physical_keycode)
+					universal_settings_menu.settings_data.universal_keybind_9_keycode = int(event.physical_keycode)
 				else:
-					UniversalSettings.settings_data.universal_keybind_9_keycode = int(event.button_index)
-			elif UniversalSettings.settings_data.universal_keybind_9_keycode in range(6):
+					universal_settings_menu.settings_data.universal_keybind_9_keycode = int(event.button_index)
+			elif universal_settings_menu.settings_data.universal_keybind_9_keycode in range(6):
 				is_mouse = true
-				mouse_bind.button_index = UniversalSettings.settings_data.universal_keybind_9_keycode
-			elif UniversalSettings.settings_data.universal_keybind_9_keycode > 7:
-				key_bind.keycode = UniversalSettings.settings_data.universal_keybind_9_keycode
+				mouse_bind.button_index = universal_settings_menu.settings_data.universal_keybind_9_keycode
+			elif universal_settings_menu.settings_data.universal_keybind_9_keycode > 7:
+				key_bind.keycode = universal_settings_menu.settings_data.universal_keybind_9_keycode
 		_:
 			key_bind.keycode = -1
 	
@@ -221,25 +222,25 @@ func _input(event: InputEvent):
 			
 			match index:
 				0: # "move_forward":
-					UniversalSettings.settings_data.universal_keybind_0_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_0_keycode = key_code
 				1: # "move_back":
-					UniversalSettings.settings_data.universal_keybind_1_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_1_keycode = key_code
 				2: # "move_left":
-					UniversalSettings.settings_data.universal_keybind_2_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_2_keycode = key_code
 				3: # "move_right":
-					UniversalSettings.settings_data.universal_keybind_3_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_3_keycode = key_code
 				4: # "run":
-					UniversalSettings.settings_data.universal_keybind_4_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_4_keycode = key_code
 				5: # "jump":
-					UniversalSettings.settings_data.universal_keybind_5_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_5_keycode = key_code
 				6: # "fire":
-					UniversalSettings.settings_data.universal_keybind_6_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_6_keycode = key_code
 				7: # "interact":
-					UniversalSettings.settings_data.universal_keybind_7_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_7_keycode = key_code
 				8: # "reset":
-					UniversalSettings.settings_data.universal_keybind_8_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_8_keycode = key_code
 				9: # "exit":
-					UniversalSettings.settings_data.universal_keybind_9_keycode = key_code
+					universal_settings_menu.settings_data.universal_keybind_9_keycode = key_code
 			is_remapping = false
 			action_to_remap = null
 			remapping_button = null

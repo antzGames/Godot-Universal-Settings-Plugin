@@ -1,15 +1,16 @@
 extends VBoxContainer
 
 const VOLUME_SLIDER = preload("uid://bbed87snykmws")
+@onready var universal_settings_menu: ColorRect = $"../../../../../.."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	UniversalSettings.on_load_settings.connect(_on_load_settings)
+	universal_settings_menu.on_load_settings.connect(_on_load_settings)
 	
 	for i in AudioServer.bus_count:
 		var new_slider : VolumeSlider = VOLUME_SLIDER.instantiate()
 		add_child(new_slider)
-		if i == 3: break  # only support 4 buses for now
+		if i == 4: break  # only support 4 buses + master = 5 total
 
 func _on_load_settings():
 	for i in AudioServer.bus_count:
@@ -25,25 +26,28 @@ func _on_load_settings():
 
 		match new_slider.bus_index:
 			0: 
-				new_slider.vol_slider.value = UniversalSettings.settings_data.master_volume
+				new_slider.vol_slider.value = universal_settings_menu.settings_data.master_volume
 			1: 
-				new_slider.vol_slider.value = UniversalSettings.settings_data.music_volume
+				new_slider.vol_slider.value = universal_settings_menu.settings_data.music_volume
 			2: 
-				new_slider.vol_slider.value = UniversalSettings.settings_data.sfx_volume
+				new_slider.vol_slider.value = universal_settings_menu.settings_data.sfx_volume
 			3: 
-				new_slider.vol_slider.value = UniversalSettings.settings_data.voice_volume
+				new_slider.vol_slider.value = universal_settings_menu.settings_data.voice_volume
+			4: 
+				new_slider.vol_slider.value = universal_settings_menu.settings_data.other_volume
 				break
-		
 		
 func save_volumes_levels():
 	for i in AudioServer.bus_count:
 		var new_slider: VolumeSlider = get_child(i) as VolumeSlider
 		match new_slider.bus_index:
 			0: 
-				UniversalSettings.settings_data.master_volume = new_slider.vol_slider.value
+				universal_settings_menu.settings_data.master_volume = new_slider.vol_slider.value
 			1: 
-				UniversalSettings.settings_data.music_volume = new_slider.vol_slider.value
+				universal_settings_menu.settings_data.music_volume = new_slider.vol_slider.value
 			2: 
-				UniversalSettings.settings_data.sfx_volume = new_slider.vol_slider.value
+				universal_settings_menu.settings_data.sfx_volume = new_slider.vol_slider.value
 			3: 
-				UniversalSettings.settings_data.voice_volume = new_slider.vol_slider.value
+				universal_settings_menu.settings_data.voice_volume = new_slider.vol_slider.value
+			4: 
+				universal_settings_menu.settings_data.other_volume = new_slider.vol_slider.value

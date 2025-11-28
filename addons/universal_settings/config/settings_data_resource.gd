@@ -39,6 +39,7 @@ class_name SettingsDataResource
 @export var music_volume : float = 1.0
 @export var sfx_volume : float = 1.0
 @export var voice_volume : float = 1.0
+@export var other_volume : float = 1.0
 
 # Defaults for checkboxes
 @export var fxaa : Viewport.ScreenSpaceAA = Viewport.SCREEN_SPACE_AA_DISABLED

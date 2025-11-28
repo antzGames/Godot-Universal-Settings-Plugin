@@ -34,7 +34,7 @@ func _input(event: InputEvent):
 	# exit demo and show settings screen
 	if event.is_action("ui_cancel") and OS.get_name() != "Web":
 		get_tree().quit()
-	elif event.is_action_released("ui_accept"): 
+	elif event.is_action_released("ui_select"): 
 		# show screen via code, use below
 		UniversalSettings.show_screen()  # will do nothing if already visible
 		# show screen using signal, use below

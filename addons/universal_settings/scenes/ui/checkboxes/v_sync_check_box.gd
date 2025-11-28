@@ -1,7 +1,9 @@
 extends CheckButton
 
+@onready var universal_settings_menu: ColorRect = $"../../../../../../../.."
+
 func _ready() -> void:
-	UniversalSettings.on_load_settings.connect(_on_load_settings)
+	universal_settings_menu.on_load_settings.connect(_on_load_settings)
 	
 	var rendering_method := str(ProjectSettings.get_setting_with_override("rendering/renderer/rendering_method"))
 	match rendering_method:
@@ -17,7 +19,7 @@ func _ready() -> void:
 func _on_load_settings():
 	# Vsync: Not available on Web
 	if OS.get_name() != "Web":
-		if UniversalSettings.settings_data.vsync == DisplayServer.VSYNC_ENABLED:
+		if universal_settings_menu.settings_data.vsync == DisplayServer.VSYNC_ENABLED:
 			button_pressed = true
 		else:
 			button_pressed = false
@@ -27,8 +29,8 @@ func _on_v_sync_check_box_toggled(toggled_on):
 	#print(name, " ", toggled_on)
 	
 	if toggled_on:
-		UniversalSettings.settings_data.vsync = DisplayServer.VSYNC_ENABLED
+		universal_settings_menu.settings_data.vsync = DisplayServer.VSYNC_ENABLED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
 	else:
-		UniversalSettings.settings_data.vsync = DisplayServer.VSYNC_DISABLED
+		universal_settings_menu.settings_data.vsync = DisplayServer.VSYNC_DISABLED
 		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)

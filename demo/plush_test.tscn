@@ -83,5 +83,5 @@ horizontal_alignment = 1
 
 [node name="Information" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-text = "SPACE or ENTER to bring up SETTINGS MENU"
+text = "SPACE to bring up SETTINGS MENU"
 horizontal_alignment = 1
