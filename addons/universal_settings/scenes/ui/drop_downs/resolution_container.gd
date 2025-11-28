@@ -37,7 +37,7 @@ func _on_load_settings():
 		if OS.get_name() != "Web":
 			for resolution in UniversalSettings.resolutions:
 				resolution_option.add_item(resolution)
-				print(resolution)
+				#print(resolution)
 			_on_resolution_option_button_item_selected(UniversalSettings.settings_data.resolution_index)
 
 

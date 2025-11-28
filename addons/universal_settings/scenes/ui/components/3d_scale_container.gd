@@ -27,7 +27,7 @@ func _on_load_settings():
 	_on_scale_3D_value_changed(UniversalSettings.settings_data.scale_3d)
 
 func _on_scale_3D_value_changed(v : int):
-	print(name, " ", v)
+	#print(name, " ", v)
 	
 	var value : float
 	if v == 4:

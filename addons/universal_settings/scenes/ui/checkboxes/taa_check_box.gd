@@ -12,7 +12,7 @@ func _ready() -> void:
 			visible = false
 
 func _on_fsr_mode_changed(selected: int):
-	print("FSR mode selected: ", selected)
+	#print("FSR mode selected: ", selected)
 	
 	if UniversalSettings.renderer == 2:
 		if selected == 2:
@@ -31,7 +31,7 @@ func _on_load_settings():
 
 
 func _on_taa_check_box_toggled(toggled_on):
-	print(name, " ", toggled_on)
+	#print(name, " ", toggled_on)
 	
 	if toggled_on:
 		UniversalSettings.settings_data.taa = true

@@ -218,7 +218,18 @@ layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="AudioContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio" instance=ExtResource("11_rrgpx")]
-layout_mode = 1
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 583.0
+offset_bottom = 148.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Keybinds" type="TabBar" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer"]
 visible = false

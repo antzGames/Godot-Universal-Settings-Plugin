@@ -21,7 +21,7 @@ func _on_load_settings():
 
 
 func _on_fxaa_check_box_toggled(toggled_on):
-	print(name, " ", toggled_on)
+	#print(name, " ", toggled_on)
 	
 	if toggled_on:
 		UniversalSettings.settings_data.fxaa = Viewport.SCREEN_SPACE_AA_FXAA

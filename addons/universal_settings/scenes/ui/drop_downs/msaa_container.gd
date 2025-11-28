@@ -22,7 +22,7 @@ func _on_msaa_option_button_item_selected(index):
 
 
 func set_msaa(mode: int, index: int):
-	print("MSAA: ", mode, " ", index)
+	#print("MSAA: ", mode, " ", index)
 	match mode:
 		Viewport.MSAA_DISABLED:
 			get_tree().get_root().msaa_3d = Viewport.MSAA_DISABLED

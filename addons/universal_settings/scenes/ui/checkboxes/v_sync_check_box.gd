@@ -24,7 +24,7 @@ func _on_load_settings():
 		_on_v_sync_check_box_toggled(button_pressed)
 
 func _on_v_sync_check_box_toggled(toggled_on):
-	print(name, " ", toggled_on)
+	#print(name, " ", toggled_on)
 	
 	if toggled_on:
 		UniversalSettings.settings_data.vsync = DisplayServer.VSYNC_ENABLED

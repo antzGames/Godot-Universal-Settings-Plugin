@@ -31,7 +31,7 @@ func _on_load_settings():
 	pass
 
 func set_monitor_options() -> void:
-	print("Monitor options set")
+	#print("Monitor options set")
 	monitor_option_button.clear()
 	
 	var monitor_count = DisplayServer.get_screen_count()

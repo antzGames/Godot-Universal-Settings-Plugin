@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsxhjjwntlrdp"]
+
+[ext_resource type="Script" uid="uid://6owhwawr4w8x" path="res://addons/universal_settings/scenes/ui/keybinds/keybind_list.gd" id="1_uy4r8"]
+[ext_resource type="PackedScene" uid="uid://cxprmvpa272kd" path="res://addons/universal_settings/config/KeybindsConfig.tscn" id="2_mujb0"]
+
+[node name="KeybindList" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_uy4r8")
+
+[node name="KeybindsConfig" parent="." instance=ExtResource("2_mujb0")]

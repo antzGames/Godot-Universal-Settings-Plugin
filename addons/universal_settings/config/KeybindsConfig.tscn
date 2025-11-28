@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxprmvpa272kd"]
+
+[ext_resource type="Script" uid="uid://cl5gr8agxk010" path="res://addons/universal_settings/config/keybinds_config.gd" id="1_3rio6"]
+
+[node name="KeybindsConfig" type="Node"]
+script = ExtResource("1_3rio6")
+keybind_action_0 = &"universal_forward"
+keybind_action_1 = &"universal_back"
+keybind_action_2 = &"universal_left"
+keybind_action_3 = &"universal_right"
+keybind_action_4 = &"universal_run"
+keybind_action_5 = &"universal_jump"
+keybind_action_6 = &"universal_fire"
+keybind_action_7 = &"universal_interact"
+keybind_action_8 = &"universal_reset"
+keybind_action_9 = &"universal_exit"
+keybind_0_desc = &"Forward"
+keybind_1_desc = &"Backward"
+keybind_2_desc = &"Left"
+keybind_3_desc = &"Right"
+keybind_4_desc = &"Run"
+keybind_5_desc = &"Jump"
+keybind_6_desc = &"Fire"
+keybind_7_desc = &"Interact"
+keybind_8_desc = &"Reset"
+keybind_9_desc = &"Exit"
