@@ -145,8 +145,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 64
-text = "Settings
-"
+text = "Settings"
 
 [node name="TabContainer" type="TabContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(550, 300)
