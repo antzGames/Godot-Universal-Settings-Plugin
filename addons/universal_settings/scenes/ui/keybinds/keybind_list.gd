@@ -2,7 +2,7 @@ class_name KeyBindList
 extends VBoxContainer
 
 @onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/components/input_button.tscn")
-@onready var keybinds_config: KeybindsConfig = $KeybindsConfig
+@onready var keybinds_config = preload("uid://cxprmvpa272kd").instantiate()
 
 var is_remapping = false
 var action_to_remap = null

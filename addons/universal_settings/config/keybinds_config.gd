@@ -1,30 +1,28 @@
 extends Node
-class_name KeybindsConfig
 
-# Note you can show the builtin actions by using this:
-
-#@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
+# Note you can hide the builtin actions by using this:
+#@export_custom(PROPERTY_HINT_INPUT_NAME,"")
 
 @export_category("InputMap Actions")
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_0: StringName : set = set_my_action0
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_1: StringName : set = set_my_action1
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_2: StringName : set = set_my_action2
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_3: StringName : set = set_my_action3
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_4: StringName : set = set_my_action4
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_5: StringName : set = set_my_action5
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_6: StringName : set = set_my_action6
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_7: StringName : set = set_my_action7
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_8: StringName : set = set_my_action8
-@export_custom(PROPERTY_HINT_INPUT_NAME,"")
+@export_custom(PROPERTY_HINT_INPUT_NAME,"show_builtin")
 var keybind_action_9: StringName : set = set_my_action9
 
 

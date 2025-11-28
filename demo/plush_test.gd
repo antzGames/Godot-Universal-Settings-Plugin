@@ -31,13 +31,6 @@ func _ready():
 	camera_3d.position = Vector3(0, 15, 15)
 
 func _input(event: InputEvent):
-	# this code will only work for this project's actions
-	for a in InputMap.get_actions():
-		if a.to_lower().begins_with("universal_"):  # using this projects actions
-			if event.is_action(a.to_lower()):
-				input_info.text = str("Last action detected: '",a, "' with ", event.as_text().to_upper())
-				break
-			
 	# exit demo and show settings screen
 	if event.is_action("ui_cancel") and OS.get_name() != "Web":
 		get_tree().quit()
