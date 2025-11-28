@@ -220,6 +220,9 @@ Using keybinds requires you to configure the actions in the `KeybindsConfig.tscn
 
 You will need to select your keybind actions (up to 10) and set the action descriptions.  
 
+<img width="635" height="759" alt="us-keys" src="https://github.com/user-attachments/assets/4d618c86-32a2-43e1-9464-68c7da567ea2" />
+
+
 ## How to Delete My Saved Settings
 
 If you want to delete your saved settings on desktop:
