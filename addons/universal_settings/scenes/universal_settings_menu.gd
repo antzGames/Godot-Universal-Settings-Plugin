@@ -3,9 +3,10 @@ extends ColorRect
 # this is the tab container
 @onready var tab_container: TabContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer
 
+@onready var audio_container: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/AudioContainer
+
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var save_button = $CenterContainer/MarginContainer/VBoxContainer/SaveButton
-@onready var audio_container: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/AudioContainer
 
 var renderer: int # 0 = Compatibility, 1 = Mobile, 2 = Forward+
 var current_monitor : int = DisplayServer.window_get_current_screen()
@@ -15,7 +16,6 @@ signal on_load_settings
 signal on_initialize_controls
 signal on_fsr_mode_changed(int)
 signal on_resolution_item_selected(int)
-
 
 # saving/loading resource
 var settings_data : SettingsDataResource
@@ -106,15 +106,6 @@ func _ready():
 		create_action_list(true)
 	else:
 		create_action_list(false)
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 func create_action_list(set_defaults: bool):
 	for item in action_list.get_children():
@@ -350,14 +341,6 @@ func _input(event: InputEvent):
 			accept_event()
 	
 	
-	
-	
-	
-	
-func _exit_tree():
-	# Clean-up of the plugin goes here.
-	pass
-	
 func initialize_controls():
 	on_initialize_controls.emit()
 	
@@ -368,7 +351,6 @@ func _process(_delta: float) -> void:
 		reset_button.visible = true
 	else:
 		reset_button.visible = false
-
 
 func save_settings():
 	audio_container.save_volumes_levels()
