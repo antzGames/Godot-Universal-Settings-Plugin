@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq554s5nul5o2"]
+
+[ext_resource type="Script" uid="uid://db31glxjq64om" path="res://addons/universal_settings/scenes/ui/drop_downs/resolution_container.gd" id="1_tvueb"]
+
+[node name="ResolutionContainer" type="HBoxContainer"]
+script = ExtResource("1_tvueb")
+
+[node name="ResolutionLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+text = "Window Size:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="." groups=["Button"]]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+fit_to_longest_item = false
+
+[connection signal="item_selected" from="ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]

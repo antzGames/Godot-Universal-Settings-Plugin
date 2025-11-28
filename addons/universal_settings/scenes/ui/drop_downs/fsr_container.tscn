@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://d5d4do5no2tw"]
+
+[ext_resource type="Script" uid="uid://dqtlk3qapuvmf" path="res://addons/universal_settings/scenes/ui/drop_downs/fsr_container.gd" id="1_civ32"]
+
+[node name="FSRContainer" type="HBoxContainer"]
+script = ExtResource("1_civ32")
+
+[node name="FSRLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+text = "Scaling Mode:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="FSROptionButton" type="OptionButton" parent="." groups=["Button"]]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "* Scaling Mode
+
+Bilinear: Fast but poor quality
+FSR 1.0:  Works best  with TAA + MSAA
+FSR 2.2:  Slowest but best quality, no need for TAA 
+                 and you should disable MSAA"
+focus_mode = 0
+selected = 0
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "Bilinear"
+popup/item_0/id = 0
+popup/item_1/text = "FSR 1.0"
+popup/item_1/id = 1
+popup/item_2/text = "FSR 2.2"
+popup/item_2/id = 2
+
+[connection signal="item_selected" from="FSROptionButton" to="." method="_on_fsr_option_button_item_selected"]

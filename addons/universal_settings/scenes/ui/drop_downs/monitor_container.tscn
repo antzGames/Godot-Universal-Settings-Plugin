@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://xypbbv77q8om"]
+
+[ext_resource type="Script" uid="uid://ddjp425jgjgrp" path="res://addons/universal_settings/scenes/ui/drop_downs/monitor_container.gd" id="1_ooj0g"]
+
+[node name="MonitorContainer" type="HBoxContainer"]
+script = ExtResource("1_ooj0g")
+
+[node name="MonitorLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+text = "Monitor:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MonitorButton" type="OptionButton" parent="." groups=["Button"]]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+selected = 0
+fit_to_longest_item = false
+item_count = 2
+popup/item_0/text = "Monitor 0 (Current)"
+popup/item_0/id = 0
+popup/item_1/text = "Monitor 1"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="MonitorButton" to="." method="_on_monitor_button_item_selected"]

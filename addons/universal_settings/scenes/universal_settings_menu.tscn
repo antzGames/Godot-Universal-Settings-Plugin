@@ -1,7 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6sy572h06xqn"]
+[gd_scene load_steps=17 format=3 uid="uid://b6sy572h06xqn"]
 
 [ext_resource type="Script" uid="uid://bgmlopaqxx325" path="res://addons/universal_settings/scenes/universal_settings_menu.gd" id="1_c2d6w"]
+[ext_resource type="PackedScene" uid="uid://dayahwfbx70ri" path="res://addons/universal_settings/scenes/ui/drop_downs/window_mode_container.tscn" id="2_6dc7h"]
+[ext_resource type="PackedScene" uid="uid://dvvyu2gni5x0c" path="res://addons/universal_settings/scenes/ui/components/3d_scale_container.tscn" id="2_7qv6v"]
+[ext_resource type="PackedScene" uid="uid://d5d4do5no2tw" path="res://addons/universal_settings/scenes/ui/drop_downs/fsr_container.tscn" id="2_i04ro"]
+[ext_resource type="PackedScene" uid="uid://dssr3713gcxly" path="res://addons/universal_settings/scenes/ui/drop_downs/msaa_container.tscn" id="2_nvwi4"]
+[ext_resource type="PackedScene" uid="uid://xypbbv77q8om" path="res://addons/universal_settings/scenes/ui/drop_downs/monitor_container.tscn" id="2_rrgpx"]
 [ext_resource type="PackedScene" uid="uid://cwgy3qn26typm" path="res://addons/universal_settings/scenes/ui/checkboxes/fxaa_check_box.tscn" id="2_vewf4"]
+[ext_resource type="PackedScene" uid="uid://dq554s5nul5o2" path="res://addons/universal_settings/scenes/ui/drop_downs/resolution_container.tscn" id="2_ysr1t"]
 [ext_resource type="PackedScene" uid="uid://7gjmbcp7rbty" path="res://addons/universal_settings/scenes/ui/checkboxes/taa_check_box.tscn" id="3_0rip6"]
 [ext_resource type="PackedScene" uid="uid://c2realw2o3f2x" path="res://addons/universal_settings/scenes/ui/components/input_button.tscn" id="3_2wmvu"]
 [ext_resource type="PackedScene" uid="uid://bbed87snykmws" path="res://addons/universal_settings/scenes/ui/components/volume_slider.tscn" id="3_eeyia"]
@@ -174,163 +180,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
 
-[node name="MonitorContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+[node name="MonitorContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_rrgpx")]
 layout_mode = 2
 
-[node name="MonitorLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MonitorContainer"]
-custom_minimum_size = Vector2(225, 0)
-layout_mode = 2
-text = "Monitor:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="MonitorButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MonitorContainer" groups=["Button"]]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-focus_mode = 0
-selected = 0
-fit_to_longest_item = false
-item_count = 2
-popup/item_0/text = "Monitor 0 (Current)"
-popup/item_0/id = 0
-popup/item_1/text = "Monitor 1"
-popup/item_1/id = 1
-
-[node name="WindowModeContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+[node name="WindowModeContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_6dc7h")]
 layout_mode = 2
 
-[node name="WindowModeLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/WindowModeContainer"]
-custom_minimum_size = Vector2(225, 0)
-layout_mode = 2
-text = "Display Mode:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="WindowModeButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/WindowModeContainer" groups=["Button"]]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-focus_mode = 0
-fit_to_longest_item = false
-
-[node name="ResolutionContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+[node name="ResolutionContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_ysr1t")]
 layout_mode = 2
 
-[node name="ResolutionLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/ResolutionContainer"]
-custom_minimum_size = Vector2(225, 0)
-layout_mode = 2
-text = "Window Size:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="ResolutionOptionButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/ResolutionContainer" groups=["Button"]]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-focus_mode = 0
-fit_to_longest_item = false
-
-[node name="MSAAContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+[node name="MSAAContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_nvwi4")]
 layout_mode = 2
 
-[node name="MSAALabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MSAAContainer"]
-custom_minimum_size = Vector2(225, 0)
-layout_mode = 2
-text = "MSAA:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="MSAAOptionButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MSAAContainer" groups=["Button"]]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-tooltip_text = "* Multi-Sample Anti-Aliasing
-
-Smooths out polygon edges"
-focus_mode = 0
-selected = 2
-fit_to_longest_item = false
-item_count = 4
-popup/item_0/text = "None"
-popup/item_0/id = 0
-popup/item_1/text = "2x"
-popup/item_1/id = 1
-popup/item_2/text = "4x"
-popup/item_2/id = 2
-popup/item_3/text = "8x"
-popup/item_3/id = 3
-
-[node name="FSRContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+[node name="FSRContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_i04ro")]
 layout_mode = 2
 
-[node name="FSRLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer"]
-custom_minimum_size = Vector2(225, 0)
+[node name="3DScaleContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer" instance=ExtResource("2_7qv6v")]
 layout_mode = 2
-text = "Scaling Mode:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="FSROptionButton" type="OptionButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer" groups=["Button"]]
-custom_minimum_size = Vector2(275, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-tooltip_text = "* Scaling Mode
-
-Bilinear: Fast but poor quality
-FSR 1.0:  Works best  with TAA + MSAA
-FSR 2.2:  Slowest but best quality, no need for TAA 
-                 and you should disable MSAA"
-focus_mode = 0
-selected = 0
-fit_to_longest_item = false
-item_count = 3
-popup/item_0/text = "Bilinear"
-popup/item_0/id = 0
-popup/item_1/text = "FSR 1.0"
-popup/item_1/id = 1
-popup/item_2/text = "FSR 2.2"
-popup/item_2/id = 2
-
-[node name="3DScaleContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
-layout_mode = 2
-
-[node name="3DScaleLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer"]
-custom_minimum_size = Vector2(225, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Scaling:"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="3DScaleSlider" type="HSlider" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-tooltip_text = "* FidelityFX Super Resolution
-
-No Scaling: 100%
-Ultra Quality: 77%
-Quality: 67%
-Balanced: 59%
-Performance: 50%"
-focus_mode = 0
-max_value = 4.0
-value = 4.0
-tick_count = 5
-
-[node name="Scale3DLabel" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "100%"
-vertical_alignment = 1
 
 [node name="AAContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
 layout_mode = 2
@@ -425,10 +291,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_heq78")
 }
 
-[connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MonitorContainer/MonitorButton" to="." method="_on_monitor_button_item_selected"]
-[connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/WindowModeContainer/WindowModeButton" to="." method="_on_window_mode_button_item_selected"]
-[connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/ResolutionContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
-[connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MSAAContainer/MSAAOptionButton" to="." method="_on_msaa_option_button_item_selected"]
-[connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer/FSROptionButton" to="." method="_on_fsr_option_button_item_selected"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

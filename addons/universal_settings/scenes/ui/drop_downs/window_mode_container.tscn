@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dayahwfbx70ri"]
+
+[ext_resource type="Script" uid="uid://6jn70jfot2qj" path="res://addons/universal_settings/scenes/ui/drop_downs/window_mode_container.gd" id="1_5ol2p"]
+
+[node name="WindowModeContainer" type="HBoxContainer"]
+script = ExtResource("1_5ol2p")
+
+[node name="WindowModeLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+text = "Display Mode:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WindowModeButton" type="OptionButton" parent="." groups=["Button"]]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+focus_mode = 0
+fit_to_longest_item = false
+
+[connection signal="item_selected" from="WindowModeButton" to="." method="_on_window_mode_button_item_selected"]

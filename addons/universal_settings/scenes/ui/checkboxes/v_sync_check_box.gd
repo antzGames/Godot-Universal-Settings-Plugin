@@ -1,6 +1,5 @@
 extends CheckButton
 
-
 func _ready() -> void:
 	UniversalSettings.on_load_settings.connect(_on_load_settings)
 	
@@ -15,11 +14,6 @@ func _ready() -> void:
 		"gl_compatibility":
 			if OS.get_name() == "Web":
 				visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_load_settings():
 		# Vsync: Not available on Web

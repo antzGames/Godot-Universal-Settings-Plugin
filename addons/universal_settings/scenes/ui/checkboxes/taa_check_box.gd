@@ -1,9 +1,8 @@
 extends CheckButton
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	UniversalSettings.on_load_settings.connect(_on_load_settings)
+	UniversalSettings.on_fsr_mode_changed.connect(_on_fsr_mode_changed)
 	var rendering_method := str(ProjectSettings.get_setting_with_override("rendering/renderer/rendering_method"))
 
 	match rendering_method:
@@ -12,9 +11,11 @@ func _ready() -> void:
 		"gl_compatibility":
 			visible = false
 
-func _process(_delta: float) -> void:
+func _on_fsr_mode_changed(selected: int):
+	print("FSR mode selected: ", selected)
+	
 	if UniversalSettings.renderer == 2:
-		if UniversalSettings.fsr_option.selected == 2:
+		if selected == 2:
 			disabled = true
 		else:
 			disabled = false

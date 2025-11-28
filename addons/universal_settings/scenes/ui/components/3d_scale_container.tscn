@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvvyu2gni5x0c"]
+
+[ext_resource type="Script" uid="uid://cm7t2hdc5kyxn" path="res://addons/universal_settings/scenes/ui/components/3d_scale_container.gd" id="1_rb08v"]
+
+[node name="3DScaleContainer" type="HBoxContainer"]
+script = ExtResource("1_rb08v")
+
+[node name="3DScaleLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(225, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Scaling:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="3DScaleSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+tooltip_text = "* FidelityFX Super Resolution
+
+No Scaling: 100%
+Ultra Quality: 77%
+Quality: 67%
+Balanced: 59%
+Performance: 50%"
+focus_mode = 0
+max_value = 4.0
+value = 4.0
+tick_count = 5
+
+[node name="Scale3DLabel" type="Label" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "100%"
+vertical_alignment = 1
