@@ -5,12 +5,7 @@ extends ColorRect
 
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var save_button = $CenterContainer/MarginContainer/VBoxContainer/SaveButton
-
-# Audio
-@onready var master_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/MasterSlider
-@onready var music_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/MusicSlider
-@onready var sfx_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/SFXSlider
-@onready var voice_volume: VolumeSlider = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/VBoxContainer/VoiceSlider
+@onready var audio_container: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Audio/AudioContainer
 
 var renderer: int # 0 = Compatibility, 1 = Mobile, 2 = Forward+
 var current_monitor : int = DisplayServer.window_get_current_screen()
@@ -25,9 +20,12 @@ signal on_resolution_item_selected(int)
 # saving/loading resource
 var settings_data : SettingsDataResource
 var save_settings_path = "user://game_data/"
-var save_file_name = str("settings_data", ProjectSettings.get_setting("application/config/version"), ".tres")
 
-# dictionaries for options dropdowns
+# if you change your project version then you will reset your settings, swap to next line if this not needed
+var save_file_name = str("settings_data", ProjectSettings.get_setting("application/config/version"), ".tres")
+#var save_file_name = str("settings_data.tres") # always use same settings file on all versions of your game
+
+#region DICTIONARIES for options dropdowns
 
 # window mode dictionary - Exclusive FullScreen has to be the first element and must exist
 @export var window_modes : Dictionary = {
@@ -53,6 +51,7 @@ var msaa_modes : Dictionary =  {"None": Viewport.MSAA_DISABLED, 		# index/value 
 var fsr_modes : Dictionary =  { "Bilinear": Viewport.SCALING_3D_MODE_BILINEAR, 	# index/value = 0
 								"FSR 1.0": Viewport.SCALING_3D_MODE_FSR,		# index/value = 1
 								"FSR 2.2": Viewport.SCALING_3D_MODE_FSR2}		# index/value = 2
+#endregion
 
 # Keybinds
 @onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/components/input_button.tscn")
@@ -372,21 +371,12 @@ func _process(_delta: float) -> void:
 
 
 func save_settings():
-	settings_data.master_volume = master_volume.slider.value
-	settings_data.sfx_volume = sfx_volume.slider.value
-	settings_data.music_volume = music_volume.slider.value
-	settings_data.voice_volume = voice_volume.slider.value
+	audio_container.save_volumes_levels()
 	save_settings_resources()
 
 func load_settings():
 	if settings_data != null:
 		on_load_settings.emit()
-		
-		# Volumes
-		master_volume.slider.value = settings_data.master_volume
-		sfx_volume.slider.value = settings_data.sfx_volume
-		music_volume.slider.value = settings_data.music_volume
-		voice_volume.slider.value = settings_data.voice_volume
 
 func quit_menu():
 	save_settings()

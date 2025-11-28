@@ -4,17 +4,18 @@
 
 [node name="VolumeSlider" type="HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
+offset_right = 383.0
+offset_bottom = 23.0
 size_flags_horizontal = 4
 script = ExtResource("1_gu8m3")
-bus_name = "Voice"
 
 [node name="Label" type="Label" parent="."]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(125, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Slider" type="HSlider" parent="."]
-custom_minimum_size = Vector2(225, 0)
+[node name="VolSlider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -22,7 +23,7 @@ focus_mode = 0
 max_value = 1.0
 step = 0.001
 
-[node name="Percent" type="Label" parent="."]
+[node name="PercentLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
