@@ -1,13 +1,13 @@
 # Godot Universal Settings Plugin
 
-A versatile, renderer-aware settings screen for Godot 4.3 that seamlessly adapts across all renderers 
+A versatile, renderer-aware settings screen for Godot 4.5 that seamlessly adapts across all renderers 
 and HTML web builds.
 
 This plugin simplifies user settings management by saving and reloading configurations for graphics, audio settings, and keybinds, ensuring a consistent experience across platforms.
 
 <img src="https://github.com/user-attachments/assets/e6a93658-f99d-4f48-8c93-b955ec0ce274" width="640">
 
-Note: This is a BETA version. It should be tested thoroughly to assess its suitability for your needs.
+Version 1.2 has many QoL features.
 
 ## Table of Contents
 
@@ -35,11 +35,15 @@ Note: This is a BETA version. It should be tested thoroughly to assess its suita
 
 **Persistent Settings**: Saves user graphics, audio preferences, and keybinds, reloading them on game startup.
 
-**One-Line Integration**: A single function call to display the settings screen.
+**One-Line Integration**: A single function call to display the settings screen.  Also includes a signal.
 
 **Renderer Awareness**: Automatically adapts to the current renderer, ensuring feature compatibility (more on this [below](#supported-settings-by-renderer)).
 
 **Platform Agnostic**: Works out-of-the-box with HTML/Web builds, mobile, and desktop platforms.
+
+**Audio Bus Auto Configure**: Supports auto configure of up to 5 Audio buses, including the Master bus.
+
+**Up to 10 Keybinds**: Ability to chose which actions in the Project Settings `InputMap` are included in the Keybinds.
 
 **Customizable Themes**: Supports applying themes to the settings screen, with 4 themes included in the demo project.
 
@@ -63,14 +67,9 @@ The following graphics options are dynamically adjusted based on the renderer:
 
 ### Audio Settings
 
-The plugin supports adjusting and saving the volume of up to 4 audio buses. The plugin includes four predefined audio bus names:
+The plugin supports adjusting and saving the volume of up to 5 audio buses, including the Master bus.
 
-- Master
-- Music
-- SFX
-- Voice
-
-The `Master` bus is mandatory, but if you do not have the remaining audio buses (Music, SFX, Voice) configured in your project, the plugin will automatically not show them in the settings screen.  There is more information about audio settings and configuring audio buses [below](#audio-bus-configuration).
+No configuation needed.
 
 ## Supported Settings by Renderer
 
@@ -80,7 +79,7 @@ Here is a table of the supported settings based on the renderer:
 
 Mobile renderer's `Monitor Selection`, `Window/Fullscreen Mode`, `Window Resolution` and `VSync` settings not supported if running on Android or iOS, otherwise it is supported.
 
-Also, some developers use Compatibility mode to export to Android and iOS, and technically I should also disable `Monitor Selection`, `Window/Fullscreen Mode`, `Window Resolution` and `VSync` settings on Compatibility mode as well.  This is on my TODO list.
+Please note, you will need to wait for Godot 4.6 to fix the 3D scaling amount issue with the Compaitibility renderer. See: https://github.com/godotengine/godot/issues/107552
 
 ## Why Use This Plugin
 
@@ -115,6 +114,11 @@ Being a plugin, it provides a ready-to-use settings screen with just one line of
 ```gdscript
 UniversalSettings.show_screen()
 ```
+You can also emit a signal to show the setting screen:
+```gdscript
+UniversalSettings.show_settings_screen.emit()
+```
+
 3. Change any setting you like.  Changes are applied in real time.
 4. Clicking `Save` on the settings screen will save the settings and hide the settings screen.
 
@@ -162,42 +166,7 @@ The demo project has examples on how to apply themes, tab container size, and ta
 
 ## Audio Bus Configuration
 
-Unfortunately, I am not dynamically querying the audio buses from the project because it complicates keeping the saved settings in sync with changes to the project's audio buses information.  I might do it in the future.
-
-This means you have 3 options.
-
-### Option 1: Do Nothing
-
-Especially good choice for a newly created projects.  Doing nothing means that only the `Master` bus volume control will show up on the settings menu.  If this is all you need, you do not have to do anything, ever.
-
-### Option 2: Configure Your Audio Bus Names to Match the Plugin
-
-Right now the plugin supports the `Master` audio bus and 3 additional audio buses, and they **need** to be called Music, SFX, and Voice > **IF you do not want to modify the plugin**.
-
-This is the easiest approach.  Just configure your audio buses to the following:
-
-<img src="https://github.com/user-attachments/assets/c4493891-5441-4c5b-b3d5-c99bfb5ef00f" width="511">
-
-### Option 3: Update Plugin for Custom Audio Bus Names
-
-The other option is to update the name of the audio bus right in the plugin scene.  This can be done in the Inspector of the editor.
-
-To change the name of the plugin's audio bus follow these instructions:
-
-1. Open the `universal_settings_menu.tscn` scene in the `res://addons/universal_settings/scenes/` folder.
-2. Expand the nodes until you see the `Audio` TabBar node.
-3. Expand all the `Audio` TabBar children.
-4. You should see a node structure as shown in the image below.
-5. Select `VoiceSlider` node as this is most likely the audio bus name you will want to change.
-6. Change `Bus Name` property in the Inspector to the name of your audio bus.
-
-Keep in mind if the plugin does not find your bus with the name you provided, then it will:
-
-- show an warning in the console telling you the bus name was not found.
-- disables this audio bus. This means you will no longer see this audio bus in the settings screen.
-- however the plugin will still work.
-
-<img src="https://github.com/user-attachments/assets/5e4711e6-7590-48ed-81f5-589eddaa323f" width="582">
+The plugin will query the `AudioServer` and place up to 5 configured buses in the settings screen automatically.
 
 ## Configuring Default Settings and Dropdowns
 
@@ -220,7 +189,7 @@ The source code of this file is well documented, so if you need to change the de
 
 The only way to modify the dropdowns is by updating the dictionaries in the plugin's main script:
 
-`iniversal_settings_menu.gd`
+`universal_settings_menu.gd`
 
 You most likely want to modify the window resolutions dictionary:
 
@@ -239,7 +208,7 @@ Feel free to modify the resolutions, but make sure you set the correct index for
 
 ### Keybinds
 
-Keybinds allow you to set and persist new keyboard and mouse buttons assignments for each of the custom actions set in your `Project` > `Project Settings` > `Input Map` configuration.
+Keybinds allow you to set and persist new keyboard and mouse buttons assignments for up to 10 actions set in your `Project` > `Project Settings` > `Input Map` configuration.  Both builtin and custom actions supported.
 
 Here are the limitations:
 - Up to 10 actions can be displayed in the keybind tab.
@@ -247,11 +216,9 @@ Here are the limitations:
 - Only keyboard and mouse button events supported.
 - No controller/gamepad support.
 
-Using keybinds requires you to configure the actions in the plugin.  You must match your  `Project` > `Project Settings` > `Input Map` configuration with the plugin as show below:
+Using keybinds requires you to configure the actions in the `KeybindsConfig.tscn` scene in the `res://addons/universal_settings/config` directory.
 
-<img src="https://github.com/user-attachments/assets/5815d0eb-8009-4570-9b6d-1366a596b030" width="640">
-
-See this video for a demonstration and more information: https://youtu.be/Di7lJP5SvnI
+You will need to select your keybind actions (up to 10) and set the action descriptions.  
 
 ## How to Delete My Saved Settings
 
@@ -323,6 +290,7 @@ https://youtu.be/Di7lJP5SvnI
 
 The `Forward+` renderer has many more graphics settings that are available.  They include:
 
+- SMAA
 - SSR
 - SSAO
 - SSIL
