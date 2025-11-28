@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c35mvpyxxtfhe"]
+
+[ext_resource type="Script" uid="uid://cx32g8neu0woc" path="res://addons/universal_settings/scenes/ui/checkboxes/v_sync_check_box.gd" id="1_ervuw"]
+
+[node name="VSyncCheckBox" type="CheckButton" groups=["Button"]]
+custom_minimum_size = Vector2(160, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "* VSync
+
+ON: GPU will sync frame rate
+        to monitor's frame rate.
+OFF: GPU will try to render as
+         many frames per second"
+focus_mode = 0
+action_mode = 0
+text = "VSync:"
+alignment = 2
+script = ExtResource("1_ervuw")
+
+[connection signal="toggled" from="." to="." method="_on_v_sync_check_box_toggled"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwgy3qn26typm"]
+
+[ext_resource type="Script" uid="uid://dcn4a5c5u6gtb" path="res://addons/universal_settings/scenes/ui/checkboxes/fxaa_check_box.gd" id="1_gjbo5"]
+
+[node name="FXAACheckBox" type="CheckButton" groups=["Button"]]
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "* Fast Approximate Anti-Aliasing
+
+Computationally cheap but blurry anti-aliasing"
+focus_mode = 0
+action_mode = 0
+text = "FXAA:"
+alignment = 2
+script = ExtResource("1_gjbo5")
+
+[connection signal="toggled" from="." to="." method="_on_fxaa_check_box_toggled"]

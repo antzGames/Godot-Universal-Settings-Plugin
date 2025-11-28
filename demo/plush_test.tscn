@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b6yvra0h67504"]
 
-[ext_resource type="Script" path="res://demo/plush_test.gd" id="1_84jri"]
+[ext_resource type="Script" uid="uid://cusrc4yp2jpg7" path="res://demo/plush_test.gd" id="1_84jri"]
 [ext_resource type="Texture2D" uid="uid://di7i1ttqxn2li" path="res://demo/assets/images/texture_13flip.png" id="3_445g5"]
 [ext_resource type="PackedScene" uid="uid://c7hyl5tbflymn" path="res://demo/assets/models/godot_plushV2.glb" id="4_mp36c"]
 

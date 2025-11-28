@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6sy572h06xqn"]
+[gd_scene load_steps=11 format=3 uid="uid://b6sy572h06xqn"]
 
-[ext_resource type="Script" path="res://addons/universal_settings/scenes/universal_settings_menu.gd" id="1_c2d6w"]
-[ext_resource type="PackedScene" uid="uid://c2realw2o3f2x" path="res://addons/universal_settings/scenes/ui/input_button.tscn" id="3_2wmvu"]
-[ext_resource type="PackedScene" uid="uid://bbed87snykmws" path="res://addons/universal_settings/scenes/ui/volume_slider.tscn" id="3_eeyia"]
+[ext_resource type="Script" uid="uid://bgmlopaqxx325" path="res://addons/universal_settings/scenes/universal_settings_menu.gd" id="1_c2d6w"]
+[ext_resource type="PackedScene" uid="uid://cwgy3qn26typm" path="res://addons/universal_settings/scenes/ui/checkboxes/fxaa_check_box.tscn" id="2_vewf4"]
+[ext_resource type="PackedScene" uid="uid://7gjmbcp7rbty" path="res://addons/universal_settings/scenes/ui/checkboxes/taa_check_box.tscn" id="3_0rip6"]
+[ext_resource type="PackedScene" uid="uid://c2realw2o3f2x" path="res://addons/universal_settings/scenes/ui/components/input_button.tscn" id="3_2wmvu"]
+[ext_resource type="PackedScene" uid="uid://bbed87snykmws" path="res://addons/universal_settings/scenes/ui/components/volume_slider.tscn" id="3_eeyia"]
+[ext_resource type="PackedScene" uid="uid://c35mvpyxxtfhe" path="res://addons/universal_settings/scenes/ui/checkboxes/v_sync_check_box.tscn" id="4_nsxbx"]
 
 [sub_resource type="Animation" id="Animation_mjsge"]
 resource_name = "HideSettings"
@@ -89,9 +92,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_heq78"]
 _data = {
-"HideSettings": SubResource("Animation_mjsge"),
-"RESET": SubResource("Animation_gj7co"),
-"ShowSettings": SubResource("Animation_ic603")
+&"HideSettings": SubResource("Animation_mjsge"),
+&"RESET": SubResource("Animation_gj7co"),
+&"ShowSettings": SubResource("Animation_ic603")
 }
 
 [node name="UniversalSettingsMenu" type="ColorRect"]
@@ -191,6 +194,7 @@ selected = 0
 fit_to_longest_item = false
 item_count = 2
 popup/item_0/text = "Monitor 0 (Current)"
+popup/item_0/id = 0
 popup/item_1/text = "Monitor 1"
 popup/item_1/id = 1
 
@@ -253,6 +257,7 @@ selected = 2
 fit_to_longest_item = false
 item_count = 4
 popup/item_0/text = "None"
+popup/item_0/id = 0
 popup/item_1/text = "2x"
 popup/item_1/id = 1
 popup/item_2/text = "4x"
@@ -286,6 +291,7 @@ selected = 0
 fit_to_longest_item = false
 item_count = 3
 popup/item_0/text = "Bilinear"
+popup/item_0/id = 0
 popup/item_1/text = "FSR 1.0"
 popup/item_1/id = 1
 popup/item_2/text = "FSR 2.2"
@@ -331,49 +337,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="FXAACheckBox" type="CheckButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" groups=["Button"]]
+[node name="FXAACheckBox" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" instance=ExtResource("2_vewf4")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-tooltip_text = "* Fast Approximate Anti-Aliasing
 
-Computationally cheap but blurry anti-aliasing"
-focus_mode = 0
-action_mode = 0
-text = "FXAA:"
-alignment = 2
-
-[node name="TAACheckBox" type="CheckButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" groups=["Button"]]
-custom_minimum_size = Vector2(155, 0)
+[node name="TAACheckBox" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" instance=ExtResource("3_0rip6")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-tooltip_text = "* Temporal Anti-Aliasing
 
-Uses multiple frames to
-smooth out jaggies,
-flickering, and shimmering
-without blurring"
-focus_mode = 0
-action_mode = 0
-text = "TAA:"
-alignment = 2
-
-[node name="VSyncCheckBox" type="CheckButton" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" groups=["Button"]]
-custom_minimum_size = Vector2(160, 0)
+[node name="VSyncCheckBox" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer" instance=ExtResource("4_nsxbx")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-tooltip_text = "* VSync
-
-ON: GPU will sync frame rate
-        to monitor's frame rate.
-OFF: GPU will try to render as
-         many frames per second"
-focus_mode = 0
-action_mode = 0
-text = "VSync:"
-alignment = 2
 
 [node name="Audio" type="TabBar" parent="CenterContainer/MarginContainer/VBoxContainer/TabContainer"]
 visible = false
@@ -451,7 +422,7 @@ text = "Save"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_heq78")
+&"": SubResource("AnimationLibrary_heq78")
 }
 
 [connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MonitorContainer/MonitorButton" to="." method="_on_monitor_button_item_selected"]
@@ -459,8 +430,5 @@ libraries = {
 [connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/ResolutionContainer/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
 [connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/MSAAContainer/MSAAOptionButton" to="." method="_on_msaa_option_button_item_selected"]
 [connection signal="item_selected" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer/FSROptionButton" to="." method="_on_fsr_option_button_item_selected"]
-[connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox" to="." method="_on_fxaa_check_box_toggled"]
-[connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox" to="." method="_on_taa_check_box_toggled"]
-[connection signal="toggled" from="CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox" to="." method="_on_v_sync_check_box_toggled"]
 [connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

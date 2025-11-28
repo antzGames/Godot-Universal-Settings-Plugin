@@ -14,9 +14,9 @@ extends ColorRect
 @onready var fsr_option = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/FSRContainer/FSROptionButton"
 
 # Check boxes
-@onready var fxaa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox"
-@onready var taa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox"
-@onready var vysnc_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox"
+#@onready var fxaa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/FXAACheckBox"
+#@onready var taa_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/TAACheckBox"
+#@onready var vysnc_checkbox = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/AAContainer/VSyncCheckBox"
 @onready var scale_3d_slider = $"CenterContainer/MarginContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer/3DScaleContainer/3DScaleSlider"
 
 # 3D Scale slider label
@@ -35,6 +35,8 @@ var msaa_mode_selected
 var fsr_mode_selected
 
 var renderer: int # 0 = Compatibility, 1 = Mobile, 2 = Forward+
+signal on_load_settings
+
 var last_monitor_count := DisplayServer.get_screen_count() # monitor count
 
 # saving/loading resource
@@ -70,7 +72,7 @@ var fsr_modes : Dictionary =  { "Bilinear": Viewport.SCALING_3D_MODE_BILINEAR, 	
 								"FSR 2.2": Viewport.SCALING_3D_MODE_FSR2}		# index/value = 2
 
 # Keybinds
-@onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/input_button.tscn")
+@onready var input_button_scene = preload("res://addons/universal_settings/scenes/ui/components/input_button.tscn")
 @onready var action_list: VBoxContainer = $CenterContainer/MarginContainer/VBoxContainer/TabContainer/Keybinds/MarginContainer/ScrollContainer/ActionList
 @onready var reset_button: Button = $CenterContainer/MarginContainer/VBoxContainer/ResetButton
 
@@ -113,22 +115,17 @@ func _ready():
 		"mobile":
 			renderer = 1 
 			fsr_option.disabled = true
-			taa_checkbox.visible = false
 			
 			# disable window mode and resolutions on phones (Android and iOS)
 			if OS.get_name() == "Android" or OS.get_name() == "iOS":
 				resolution_option.disabled = true
 				window_mode_option.disabled = true
-				vysnc_checkbox.visible = false
 
 		"gl_compatibility":
 			renderer = 0
 			fsr_option.disabled = true
-			taa_checkbox.visible = false
-			fxaa_checkbox.visible = false
 
 			if OS.get_name() == "Web":
-				vysnc_checkbox.visible = false
 				resolution_option.disabled = true
 				window_mode_option.disabled = true
 				screen_option_button.disabled = true
@@ -431,12 +428,7 @@ func _process(_delta: float) -> void:
 			resolution_option.disabled = false
 		else:
 			resolution_option.disabled = true
-	
-	if renderer == 2:
-		if fsr_option.selected == 2:
-			taa_checkbox.disabled = true
-		else:
-			taa_checkbox.disabled = false
+
 
 func save_settings():
 	settings_data.master_volume = master_volume.slider.value
@@ -447,6 +439,8 @@ func save_settings():
 
 func load_settings():
 	if settings_data != null:
+		on_load_settings.emit()
+		
 		# Volumes
 		master_volume.slider.value = settings_data.master_volume
 		sfx_volume.slider.value = settings_data.sfx_volume
@@ -475,29 +469,6 @@ func load_settings():
 		# 3D Scale
 		_on_scale_3D_value_changed(settings_data.scale_3d)
 
-		# FXAA: Only available on Mobile and Forward+
-		if renderer != 0:
-			if settings_data.fxaa == Viewport.SCREEN_SPACE_AA_FXAA:
-				fxaa_checkbox.button_pressed = true
-			else:
-				fxaa_checkbox.button_pressed = false
-			_on_fxaa_check_box_toggled(fxaa_checkbox.button_pressed)
-
-		# TAA: Only available on Forward+
-		if renderer == 2:
-			if settings_data.taa:
-				taa_checkbox.button_pressed = true
-			else:
-				taa_checkbox.button_pressed = false
-			_on_taa_check_box_toggled(taa_checkbox.button_pressed)
-
-		# Vsync: Not available on Web
-		if OS.get_name() != "Web":
-			if settings_data.vsync == DisplayServer.VSYNC_ENABLED:
-				vysnc_checkbox.button_pressed = true
-			else:
-				vysnc_checkbox.button_pressed = false
-			_on_v_sync_check_box_toggled(vysnc_checkbox.button_pressed)
 		
 func set_fsr(mode: int, index: int):
 	match mode:
@@ -594,32 +565,7 @@ func _on_fsr_option_button_item_selected(index):
 	fsr_mode_selected = fsr_modes.get(fsr_option.get_item_text(index)) as int
 	set_fsr(fsr_mode_selected, index)
 
-func _on_fxaa_check_box_toggled(toggled_on):
-	if toggled_on:
-		settings_data.fxaa = Viewport.SCREEN_SPACE_AA_FXAA
-		get_tree().get_root().get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA
-	else:
-		settings_data.fxaa = Viewport.SCREEN_SPACE_AA_DISABLED
-		get_tree().get_root().get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED
 
-func _on_taa_check_box_toggled(toggled_on):
-	if toggled_on:
-		settings_data.taa = true
-		if OS.get_name() != "Web":
-			get_tree().get_root().get_viewport().use_taa = true
-	else:
-		settings_data.taa = false
-		if OS.get_name() != "Web":
-			get_tree().get_root().get_viewport().use_taa = false
-
-func _on_v_sync_check_box_toggled(toggled_on):
-	if toggled_on:
-		settings_data.vsync = DisplayServer.VSYNC_ENABLED
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		settings_data.vsync = DisplayServer.VSYNC_DISABLED
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	
 func _on_scale_3D_value_changed(v : int):
 	var value : float
 	if v == 4:

@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://7gjmbcp7rbty"]
+
+[ext_resource type="Script" uid="uid://3rnp3pjnhg3s" path="res://addons/universal_settings/scenes/ui/checkboxes/taa_check_box.gd" id="1_twtr5"]
+
+[node name="TAACheckBox" type="CheckButton" groups=["Button"]]
+custom_minimum_size = Vector2(155, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 3
+tooltip_text = "* Temporal Anti-Aliasing
+
+Uses multiple frames to
+smooth out jaggies,
+flickering, and shimmering
+without blurring"
+focus_mode = 0
+action_mode = 0
+text = "TAA:"
+alignment = 2
+script = ExtResource("1_twtr5")
+
+[connection signal="toggled" from="." to="." method="_on_taa_check_box_toggled"]
