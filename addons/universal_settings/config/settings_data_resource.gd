@@ -5,12 +5,10 @@ class_name SettingsDataResource
 # It containes the variables needed to persist and more importantly,
 # sets the DEFAULT settings the first time your game is run.
 
-@export var monitor_number : int  = 0
-
-# "Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN > index=0, value=4, MUST BE FIRST AND PRESENT
+# "Fullscreen" : DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN 	> index=0, value=4, MUST BE FIRST AND PRESENT
 # "Window"     : DisplayServer.WINDOW_MODE_WINDOWED				> index=1, value=0
 # The following is the default window mode. This will override any project settings.
-@export var window_mode : int = 4		# use value of fullscreen
+@export var window_mode : int = 4		 # use value of fullscreen
 @export var window_mode_index : int = 0 # use index of fullscreen
 
 
@@ -38,8 +36,8 @@ class_name SettingsDataResource
 
 # Volumes - You can set the default volumes here (0..1)
 @export var master_volume : float = 1.0
-@export var sfx_volume : float = 1.0
 @export var music_volume : float = 1.0
+@export var sfx_volume : float = 1.0
 @export var voice_volume : float = 1.0
 
 # Defaults for checkboxes
@@ -57,7 +55,6 @@ class_name SettingsDataResource
 @export var universal_keybind_3_keycode : int
 @export var universal_keybind_4_keycode : int
 @export var universal_keybind_5_keycode : int
-
 @export var universal_keybind_6_keycode : int
 @export var universal_keybind_7_keycode : int
 @export var universal_keybind_8_keycode : int

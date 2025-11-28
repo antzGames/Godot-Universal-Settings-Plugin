@@ -9,7 +9,7 @@ func _ready() -> void:
 	for i in AudioServer.bus_count:
 		var new_slider : VolumeSlider = VOLUME_SLIDER.instantiate()
 		add_child(new_slider)
-
+		if i == 3: break  # only support 4 buses for now
 
 func _on_load_settings():
 	for i in AudioServer.bus_count:
