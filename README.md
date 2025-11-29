@@ -7,7 +7,7 @@ This plugin simplifies user settings management by saving and reloading configur
 
 <img src="https://github.com/user-attachments/assets/e6a93658-f99d-4f48-8c93-b955ec0ce274" width="640">
 
-Version 1.2 has many QoL features.
+Version 1.1.2 comes with a few QoL features, mostly on the auto config of the Audio Buses, and easy to setup keybind actions.
 
 ## Table of Contents
 
